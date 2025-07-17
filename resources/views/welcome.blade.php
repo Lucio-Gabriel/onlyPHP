@@ -1222,7 +1222,8 @@
                     <span class="text-2xl font-bold text-primary">OnlyPHP</span>
                 </div>
                 <nav class="hidden md:flex space-x-6">
-                    <a href="login.html" class="text-gray-600 hover:text-secondary transition-colors">
+                    <a href="{{ route('login.candidate') }}"
+                        class="text-gray-600 hover:text-secondary transition-colors">
                         Sou candidato
                     </a>
                     <a href="register.html" class="text-gray-600 hover:text-secondary transition-colors">
@@ -1238,7 +1239,8 @@
                     <div class="space-y-8">
                         <div class="space-y-6">
                             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                                Encontre vagas <span class="text-secondary">exclusivas</span> para desenvolvedores  <span class="text-secondary">PHP</span>
+                                Encontre vagas <span class="text-secondary">exclusivas</span> para desenvolvedores <span
+                                    class="text-secondary">PHP</span>
                             </h1>
                             <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
                                 A plataforma especializada que conecta talentos PHP com as melhores oportunidades do
@@ -1249,7 +1251,7 @@
                         <div class="flex flex-wrap gap-8">
                             <div class="flex items-center space-x-3">
                                 <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
-                                   <x-svg.bag class="w-6 h-6 text-secondary" />
+                                    <x-svg.bag class="w-6 h-6 text-secondary" />
                                 </div>
                                 <div>
                                     <div class="text-2xl font-bold text-gray-900">500+</div>
@@ -1341,4 +1343,5 @@
             </div>
         </footer>
     </div>
+
 </html>
