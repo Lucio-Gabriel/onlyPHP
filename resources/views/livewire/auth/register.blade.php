@@ -11,20 +11,20 @@
                     <h1 class="text-2xl font-bold text-gray-900 mb-2">Crie sua conta</h1>
                     <p class="text-gray-600">Junte-se à comunidade <span class="font-semibold">OnlyPHP</span></p>
                 </div>
-                <form class="space-y-6">
+                <form wire:submit.prevent="register" class="space-y-6">
                     <div>
-                        <x-form.label for="fullName" label="Nome completo" />
+                        <x-form.label for="name" label="Nome completo" />
 
-                        <x-form.input id="fullName" name="fullName" type="text" placeholder="Seu nome completo"
-                            wire:model="fullName">
+                        <x-form.input id="name" name="name" type="text" placeholder="Seu nome completo"
+                            wire:model="name">
                             <x-slot name="icon">
                                 <x-svg.envelope class="w-5 h-5 text-gray-400" />
                             </x-slot>
                         </x-form.input>
 
                         <div class="mt-3 text-sm">
-                            @if ($errors->has('fullName'))
-                                <span class="text-red-500">{{ $errors->first('fullName') }}</span>
+                            @if ($errors->has('name'))
+                                <span class="text-red-500">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div>
                         <x-form.label for="email" label="E-mail" />
 
-                         <x-form.input id="email" name="email" type="email" placeholder="seu@email.com"
+                        <x-form.input id="email" name="email" type="email" placeholder="seu@email.com"
                             wire:model="email">
                             <x-slot name="icon">
                                 <x-svg.envelope class="w-5 h-5 text-gray-400" />
@@ -67,10 +67,10 @@
                     </div>
 
                     <div>
-                        <x-form.label for="confirmPassword" label="Confirmar senha" />
+                        <x-form.label for="password_confirmation" label="Confirmar senha" />
 
-                        <x-form.input id="confirmPassword" name="confirmPassword" type="password" placeholder="••••••••"
-                            wire:model="password">
+                        <x-form.input id="password_confirmation" name="password_confirmation" type="password"
+                            placeholder="••••••••" wire:model="password_confirmation">
                             <x-slot name="icon">
                                 <x-svg.lock class="w-5 h-5 text-gray-400" />
                             </x-slot>
@@ -113,7 +113,8 @@
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <p class="text-center text-gray-600">
                         Já tem uma conta?
-                        <a href="{{ route('login.candidate') }}" wire:navigate class="text-secondary hover:text-primary font-semibold transition-colors">
+                        <a href="{{ route('login.candidate') }}" wire:navigate
+                            class="text-secondary hover:text-primary font-semibold transition-colors">
                             Login
                         </a>
                     </p>
