@@ -88,19 +88,12 @@
 
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="terms" name="terms" type="checkbox"
+                            <input id="terms" name="terms" type="checkbox" wire:model="remember"
                                 class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-secondary focus:ring-2" />
                         </div>
                         <div class="ml-3 text-sm">
                             <label for="terms" class="text-gray-700">
-                                Aceito os
-                                <a href="#" class="text-secondary hover:text-primary transition-colors">
-                                    termos de uso
-                                </a>
-                                e
-                                <a href="#" class="text-secondary hover:text-primary transition-colors">
-                                    política de privacidade
-                                </a>
+                                Lembrar-me
                             </label>
                         </div>
                     </div>

@@ -1209,6 +1209,18 @@
 </head>
 
 <body>
+
+    @if (session()->has('message'))
+        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false }, 3000)" class="flex justify-center mt-3">
+            <div class="w-1/2 text-center">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                    role="alert">
+                    {{ session('message') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
     {{ $slot }}
 </body>
 
