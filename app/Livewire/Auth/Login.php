@@ -18,11 +18,11 @@ class Login extends Component
     public function messages(): array
     {
         return [
-            'email.required' => 'O campo email é obrigatório.',
-            'email.email' => 'O campo email é inválido.',
-            'email.max' => 'O campo email deve ter no máximo 255 caracteres.',
+            'email.required'    => 'O campo email é obrigatório.',
+            'email.email'       => 'O campo email é inválido.',
+            'email.max'         => 'O campo email deve ter no máximo 255 caracteres.',
             'password.required' => 'O campo senha é obrigatório.',
-            'password.max' => 'O campo senha deve ter no máximo 255 caracteres.',
+            'password.max'      => 'O campo senha deve ter no máximo 255 caracteres.',
         ];
     }
 
@@ -31,7 +31,7 @@ class Login extends Component
         $this->validate();
 
         $credentials = [
-            'email' => $this->email,
+            'email'    => $this->email,
             'password' => $this->password,
         ];
 

@@ -1,0 +1,13 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "array_indentation": true,
+        "binary_operator_spaces": {
+            "default": "single_space",
+            "operators": {
+                "=>": "align_single_space_minimal"
+            }
+        },
+        "trailing_comma_in_multiline": true
+    }
+}

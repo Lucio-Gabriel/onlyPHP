@@ -6,7 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::prefix('candidate')->group(function () {
     Route::get('/login', App\Livewire\Auth\Login::class)->name('login.candidate');
 

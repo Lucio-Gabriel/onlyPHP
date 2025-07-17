@@ -28,18 +28,18 @@ class Register extends Component
     {
         return [
             'name.required' => 'O campo nome é obrigatório.',
-            'name.min' => 'O campo nome deve ter no mínimo 3 caracteres.',
-            'name.max' => 'O campo nome deve ter no máximo 255 caracteres.',
+            'name.min'      => 'O campo nome deve ter no mínimo 3 caracteres.',
+            'name.max'      => 'O campo nome deve ter no máximo 255 caracteres.',
 
             'email.required' => 'O campo email é obrigatório.',
-            'email.email' => 'O campo email é inválido.',
-            'email.min' => 'O campo email deve ter no mínimo 3 caracteres.',
-            'email.max' => 'O campo email deve ter no máximo 255 caracteres.',
-            'email.unique' => 'O email já está em uso.',
+            'email.email'    => 'O campo email é inválido.',
+            'email.min'      => 'O campo email deve ter no mínimo 3 caracteres.',
+            'email.max'      => 'O campo email deve ter no máximo 255 caracteres.',
+            'email.unique'   => 'O email já está em uso.',
 
-            'password.required' => 'O campo senha é obrigatório.',
-            'password.min' => 'O campo senha deve ter no mínimo 3 caracteres.',
-            'password.max' => 'O campo senha deve ter no máximo 255 caracteres.',
+            'password.required'  => 'O campo senha é obrigatório.',
+            'password.min'       => 'O campo senha deve ter no mínimo 3 caracteres.',
+            'password.max'       => 'O campo senha deve ter no máximo 255 caracteres.',
             'password.confirmed' => 'As senhas não conferem.',
         ];
     }
@@ -49,8 +49,8 @@ class Register extends Component
         $this->validate();
 
         $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
+            'name'     => $this->name,
+            'email'    => $this->email,
             'password' => Hash::make($this->password),
         ]);
 
