@@ -10,6 +10,8 @@ Route::get('/', function () {
 Route::prefix('candidate')->group(function () {
     Route::get('/login', App\Livewire\Auth\Login::class)->name('login.candidate');
 
+    Route::get('/register', App\Livewire\Auth\Register::class)->name('register.candidate');
+
     Route::get('/index', App\Livewire\Candidate\Index::class)
         ->middleware('auth')
         ->name('index');
