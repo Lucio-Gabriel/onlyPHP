@@ -3,14 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>onlyPHP</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ asset('images/logo/php.png') }}" type="image/x-icon">
+
+    <title>{{ $title ?? 'onlyPHP' }}</title>
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -1211,137 +1208,20 @@
     @endif
 </head>
 
-<body class="font-sans">
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <header class="w-full px-4 py-6">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 rounded-lg flex items-center justify-center">
-                        <img src="{{ asset('images/logo/php.png') }}" alt="logo">
-                    </div>
-                    <span class="text-2xl font-bold text-primary">OnlyPHP</span>
-                </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="{{ route('login.candidate') }}"
-                        class="text-gray-600 hover:text-secondary transition-colors">
-                        Sou candidato
-                    </a>
-                    <a href="register.html" class="text-gray-600 hover:text-secondary transition-colors">
-                        Sou recrutador
-                    </a>
-                </nav>
-            </div>
-        </header>
+<body>
 
-        <main class="flex-1 px-4 py-12">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8">
-                        <div class="space-y-6">
-                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                                Encontre vagas <span class="text-secondary">exclusivas</span> para desenvolvedores <span
-                                    class="text-secondary">PHP</span>
-                            </h1>
-                            <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
-                                A plataforma especializada que conecta talentos PHP com as melhores oportunidades do
-                                mercado.
-                            </p>
-                        </div>
-
-                        <div class="flex flex-wrap gap-8">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
-                                    <x-svg.bag class="w-6 h-6 text-secondary" />
-                                </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-gray-900">500+</div>
-                                    <div class="text-sm text-gray-600">Vagas ativas</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
-                                    <x-svg.users class="w-6 h-6 text-secondary" />
-                                </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-gray-900">1000+</div>
-                                    <div class="text-sm text-gray-600">Desenvolvedores</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="register.html"
-                                class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl group">
-                                Criar conta
-                                <x-svg.arrow-down-right class="w-6 h-6 ml-2" />
-                            </a>
-                            <a href="login.html"
-                                class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-xl border-2 border-primary hover:bg-primary hover:text-white transition-all duration-200 shadow-md hover:shadow-lg">
-                                Entrar
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <div class="relative z-10 bg-white rounded-2xl shadow-2xl p-8">
-                            <div class="space-y-6">
-                                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
-                                    <div class="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 class="font-semibold text-gray-900">Desenvolvedor PHP Sênior</h3>
-                                            <p class="text-secondary">TechCorp</p>
-                                        </div>
-                                        <span
-                                            class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                            Remoto
-                                        </span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mb-4">
-                                        Oportunidade para trabalhar com Laravel, MySQL e APIs REST em projetos
-                                        inovadores.
-                                    </p>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-primary font-semibold">R$ 8.000 - R$ 12.000</span>
-                                        <button class="text-secondary hover:text-primary text-sm font-medium">Ver
-                                            detalhes →</button>
-                                    </div>
-                                </div>
-
-                                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
-                                    <div class="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 class="font-semibold text-gray-900">PHP Developer</h3>
-                                            <p class="text-secondary">StartupXYZ</p>
-                                        </div>
-                                        <span
-                                            class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                            Híbrido
-                                        </span>
-                                    </div>
-                                    <p class="text-gray-600 text-sm mb-4">
-                                        Junte-se ao nosso time para desenvolver soluções escaláveis com Symfony.
-                                    </p>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-primary font-semibold">R$ 6.000 - R$ 9.000</span>
-                                        <button class="text-secondary hover:text-primary text-sm font-medium">Ver
-                                            detalhes →</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute -top-4 -right-4 w-72 h-72 bg-secondary/10 rounded-full blur-3xl"></div>
-                        <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-                    </div>
+    @if (session()->has('message'))
+        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false }, 3000)" class="flex justify-center mt-3">
+            <div class="w-1/2 text-center">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                    role="alert">
+                    {{ session('message') }}
                 </div>
             </div>
-        </main>
+        </div>
+    @endif
 
-        <footer class="mt-36 px-4 py-8 border-t border-gray-200">
-            <div class="max-w-7xl mx-auto text-center text-gray-600">
-                <p>&copy; 2025 OnlyPHP. Conectando talentos PHP com oportunidades excepcionais.</p>
-            </div>
-        </footer>
-    </div>
+    {{ $slot }}
+</body>
 
 </html>
