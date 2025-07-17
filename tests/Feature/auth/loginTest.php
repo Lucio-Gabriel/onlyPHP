@@ -1,11 +1,22 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 
+uses(RefreshDatabase::class);
+
 it('must be able to log in', function () {
+    $user = User::create([
+        'name'     => 'John',
+        'email'    => 'john@example.com',
+        'password' => Hash::make('password'),
+    ]);
+
     Livewire::test(Login::class)
-        ->set('email', 'jhon@example.com')
+        ->set('email', 'john@example.com')
         ->set('password', 'password')
         ->call('login')
         ->assertRedirect(route('index'))

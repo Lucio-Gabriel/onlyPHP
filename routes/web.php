@@ -12,6 +12,6 @@ Route::prefix('candidate')->group(function () {
     Route::get('/register', App\Livewire\Auth\Register::class)->name('register.candidate');
 
     Route::get('/index', App\Livewire\Candidate\Index::class)
-        ->middleware('auth', 'verified')
+        ->middleware('auth')
         ->name('index');
 });
