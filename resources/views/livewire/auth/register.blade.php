@@ -100,8 +100,14 @@
 
                     <x-form.button type="submit">
                         Criar conta
+
+                        {{-- <span wire:loading class="col-md-3 offset-md-5 text-primary">Processing...</span> --}}
                     </x-form.button>
                 </form>
+
+                <div class="mb-3 row">
+
+                </div>
 
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <p class="text-center text-gray-600">
