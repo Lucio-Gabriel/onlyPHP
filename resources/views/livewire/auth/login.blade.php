@@ -64,7 +64,7 @@
                 <div class="mt-8 pt-6 border-t border-gray-200">
                     <p class="text-center text-gray-600">
                         Não tem uma conta?
-                        <a href="register.html"
+                        <a href="{{ route('register.candidate') }}" wire:navigate
                             class="text-secondary hover:text-primary font-semibold transition-colors">
                             Criar conta
                         </a>
