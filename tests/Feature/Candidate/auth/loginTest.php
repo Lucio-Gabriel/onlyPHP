@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Auth\Login;
+use App\Livewire\Candidate\Auth\Login;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
