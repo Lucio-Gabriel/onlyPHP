@@ -4,11 +4,18 @@
 
 Uma **plataforma de vagas exclusiva para desenvolvedores PHP**. Foco em vagas que realmente exigem conhecimento de PHP e suas principais stacks (Laravel, Symfony, WordPress, Zend, etc).
 
+[Saiba mais sobre o projeto](https://www.linkedin.com/posts/lucio-azevedo_php-laravel-project-activity-7351569054828036097-3hx4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFbTjrQB3b6Yq39yznOrI7H_4kKeUbbFTNE)
+
+---
 # Guia de Contribuição
 
 Olá! 👋 Ficamos felizes que você queira contribuir com este projeto. Abaixo estão as diretrizes para garantir que todos possam colaborar de forma eficiente e organizada.
 
----
+Na aba de projetos do github tem disponivel a aba de [Issues](https://github.com/Lucio-Gabriel/onlyPHP/issues) onde você pode contribuir com projeto.
+
+[Acesse o discord do projeto](https://discord.gg/a9VSs7jA)
+
+--- 
 
 ## Como Contribuir
 
