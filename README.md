@@ -4,6 +4,9 @@
 
 Uma **plataforma de vagas exclusiva para desenvolvedores PHP**. Foco em vagas que realmente exigem conhecimento de PHP e suas principais stacks (Laravel, Symfony, WordPress, Zend, etc).
 
+[Saiba mais sobre o projeto](https://www.linkedin.com/posts/lucio-azevedo_php-laravel-project-activity-7351569054828036097-3hx4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFbTjrQB3b6Yq39yznOrI7H_4kKeUbbFTNE)
+
+[Acesse o discord do projeto](https://discord.gg/a9VSs7jA)
 
 ## Stack utilizada
 
