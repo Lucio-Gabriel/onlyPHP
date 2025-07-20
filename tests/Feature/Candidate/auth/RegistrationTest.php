@@ -18,15 +18,16 @@ it('must be able to register', function () {
         ->assertSessionHas('message', 'Conta criada com sucesso.');
 });
 
-it('should be able to validate the name field', function () {
+it('should be able to validate the name field', function ($rule, $value) {
     Livewire::test(Register::class)
-        ->set('name', '')
+        ->set('name', $value)
         ->call('register')
-        ->assertHasErrors(['name' => 'required'])
-        ->set('name', str_repeat('a', 256))
-        ->call('register')
-        ->assertHasErrors(['name' => 'max']);
-});
+        ->assertHasErrors(['name' => $rule]);
+})->with([
+    'required' => ['required', ''],
+    'max:255'  => ['max:255', str_repeat('a', 256)],
+    'min:3'    => ['min:3', 'aa'],
+]);
 
 it('should be able to validate the email field', function ($rule, $value) {
     User::factory()->create(['email' => 'joe@doe.com']);

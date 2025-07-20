@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class Register extends Component
 {
-    #[Validate('required|string||min:3|max:255')]
+    #[Validate('required|string|min:3|max:255')]
     public $name = '';
 
     #[Validate('required|email|min:3|max:255|unique:users,email')]
