@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Candidate\Auth\Register;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 
@@ -27,21 +28,20 @@ it('should be able to validate the name field', function () {
         ->assertHasErrors(['name' => 'max']);
 });
 
-it('should be able to validate the email field', function () {
+it('should be able to validate the email field', function ($rule, $value) {
+    User::factory()->create(['email' => 'joe@doe.com']);
+
     Livewire::test(Register::class)
-        ->set('email', '')
+        ->set('email', $value)
         ->call('register')
-        ->assertHasErrors(['email' => 'required'])
-        ->set('email', 'jhonexample.com')
-        ->call('register')
-        ->assertHasErrors(['email' => 'email'])
-        ->set('email', str_repeat('a', 256))
-        ->call('register')
-        ->assertHasErrors(['email' => 'max'])
-        ->set('email', 'admin@example.com')
-        ->call('register')
-        ->assertHasErrors(['email' => 'unique']);
-});
+        ->assertHasErrors(['email' => $rule]);
+})->with([
+    'required' => ['required', ''],
+    'email'    => ['email', 'wrong-email.com'],
+    'max:255'  => ['max:255', str_repeat('a', 256)],
+    'min:3'    => ['min:3', 'aa'],
+    'unique'   => ['unique', 'joe@doe.com'],
+]);
 
 it('should be able to validate the password field', function () {
     Livewire::test(Register::class)
