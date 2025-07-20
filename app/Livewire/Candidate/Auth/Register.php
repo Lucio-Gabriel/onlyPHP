@@ -17,7 +17,7 @@ class Register extends Component
     #[Validate('required|email|min:3|max:255|unique:users,email')]
     public $email = '';
 
-    #[Validate('required|max:255|confirmed')]
+    #[Validate('required|max:255|min:3|confirmed')]
     public $password = '';
 
     public $password_confirmation = '';

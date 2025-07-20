@@ -53,16 +53,13 @@ it('should be able to validate the email field', function ($rule, $value) {
     'unique'   => ['unique', 'joe@doe.com'],
 ]);
 
-it('should be able to validate the password field', function () {
+it('should be able to validate the password field', function ($rule, $value) {
     Livewire::test(Register::class)
-        ->set('password', '')
-        ->call('register')
-        ->assertHasErrors(['password' => 'required'])
-        ->set('password', str_repeat('a', 256))
-        ->call('register')
-        ->assertHasErrors(['password' => 'max'])
-        ->set('password', 'password')
-        ->set('password_confirmation', 'password_invalid')
-        ->call('register')
-        ->assertHasErrors(['password' => 'confirmed']);
-});
+        ->set('password', $value)
+        ->assertHasErrors(['password' => $rule]);
+})->with([
+    'required'  => ['O campo senha é obrigatório.', ''],
+    'min:3'     => ['O campo senha deve ter no mínimo 3 caracteres.', 'aa'],
+    'max:255'   => ['O campo senha deve ter no máximo 255 caracteres.', str_repeat('a', 256)],
+    'confirmed' => ['As senhas não conferem.', 'wrong-password'],
+]);
