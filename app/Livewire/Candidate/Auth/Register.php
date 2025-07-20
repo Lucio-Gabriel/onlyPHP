@@ -12,17 +12,17 @@ use Livewire\Component;
 class Register extends Component
 {
     #[Validate('required|string|min:3|max:255')]
-    public $name = '';
+    public string $name = '';
 
     #[Validate('required|email|min:3|max:255|unique:users,email')]
-    public $email = '';
+    public string $email = '';
 
     #[Validate('required|max:255|min:3|confirmed')]
-    public $password = '';
+    public string $password = '';
 
-    public $password_confirmation = '';
+    public string $password_confirmation = '';
 
-    public $remember = false;
+    public bool $remember = false;
 
     public function messages(): array
     {
@@ -44,11 +44,11 @@ class Register extends Component
         ];
     }
 
-    public function register()
+    public function register(): null
     {
         $this->validate();
 
-        $user = User::create([
+        $user = User::query()->create([
             'name'     => $this->name,
             'email'    => $this->email,
             'password' => Hash::make($this->password),
