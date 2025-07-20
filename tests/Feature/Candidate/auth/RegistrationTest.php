@@ -2,12 +2,13 @@
 
 use App\Livewire\Candidate\Auth\Register;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 
-uses(RefreshDatabase::class);
+use function Pest\Laravel\assertAuthenticated;
+use function Pest\Laravel\assertDatabaseCount;
+use function Pest\Laravel\assertDatabaseHas;
 
-it('must be able to register', function () {
+it('should be able to register', function () {
     Livewire::test(Register::class)
         ->set('name', 'admin')
         ->set('email', 'admin@example.com')
@@ -16,6 +17,14 @@ it('must be able to register', function () {
         ->call('register')
         ->assertRedirect(route('index'))
         ->assertSessionHas('message', 'Conta criada com sucesso.');
+
+    assertAuthenticated();
+
+    assertDatabaseCount(User::class, 1);
+    assertDatabaseHas(User::class, [
+        'name'  => 'admin',
+        'email' => 'admin@example.com',
+    ]);
 });
 
 it('should be able to validate the name field', function ($rule, $value) {
