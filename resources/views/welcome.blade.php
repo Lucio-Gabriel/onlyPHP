@@ -1212,16 +1212,16 @@
 </head>
 
 <body class="font-sans">
-    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <header class="w-full px-4 py-6">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="min-h-screen h-full bg-gradient-to-br from-gray-50 to-gray-100">
+        <header class="w-full px-4 sm:px-10 py-6">
+            <div class="max-w-7xl lg:max-w-7xl mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <div class="w-10 h-10 rounded-lg flex items-center justify-center">
                         <img src="{{ asset('images/logo/php.png') }}" alt="logo">
                     </div>
                     <span class="text-2xl font-bold text-primary">OnlyPHP</span>
                 </div>
-                <nav class="hidden md:flex space-x-6">
+                <nav class="md:flex space-x-4">
                     <a href="{{ route('login.candidate') }}"
                         class="text-gray-600 hover:text-secondary transition-colors">
                         Sou candidato
@@ -1233,8 +1233,8 @@
             </div>
         </header>
 
-        <main class="flex-1 px-4 py-12">
-            <div class="max-w-6xl mx-auto">
+        <main class="flex-1 py-12">
+            <div class="max-w-7xl md:max-w-7xl sm:max-w-5xl mx-auto">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-8">
                         <div class="space-y-6">
@@ -1337,11 +1337,11 @@
             </div>
         </main>
 
-        <footer class="mt-36 px-4 py-8 border-t border-gray-200">
+        <footer class="absolute w-full bottom-0 px-4 py-8 border-t border-gray-200">
             <div class="max-w-7xl mx-auto text-center text-gray-600">
                 <p>&copy; 2025 OnlyPHP. Conectando talentos PHP com oportunidades excepcionais.</p>
             </div>
         </footer>
     </div>
-
+</body>
 </html>
