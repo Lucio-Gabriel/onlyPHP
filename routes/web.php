@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+            'vacancies' => 500,
+            'candidates' => 1200,
+    ]);
 })->name('welcome');
 
 Route::prefix('candidate')->group(function () {

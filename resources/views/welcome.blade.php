@@ -1254,7 +1254,7 @@
                                     <x-svg.bag class="w-6 h-6 text-secondary" />
                                 </div>
                                 <div>
-                                    <div class="text-2xl font-bold text-gray-900">500+</div>
+                                    <div class="text-2xl font-bold text-gray-900">{{ $vacancies }}+</div>
                                     <div class="text-sm text-gray-600">Vagas ativas</div>
                                 </div>
                             </div>
@@ -1263,19 +1263,19 @@
                                     <x-svg.users class="w-6 h-6 text-secondary" />
                                 </div>
                                 <div>
-                                    <div class="text-2xl font-bold text-gray-900">1000+</div>
+                                    <div class="text-2xl font-bold text-gray-900">{{ $candidates }}+</div>
                                     <div class="text-sm text-gray-600">Desenvolvedores</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="register.html"
+                            <a href="{{ route('register.candidate')  }}"
                                 class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl group">
                                 Criar conta
                                 <x-svg.arrow-down-right class="w-6 h-6 ml-2" />
                             </a>
-                            <a href="login.html"
+                            <a href="{{ route('login.candidate')  }}"
                                 class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-semibold rounded-xl border-2 border-primary hover:bg-primary hover:text-white transition-all duration-200 shadow-md hover:shadow-lg">
                                 Entrar
                             </a>

@@ -61,59 +61,54 @@
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div
-                            class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
-                            <div class="mb-4">
-                                <h3 class="text-lg font-semibold text-foreground mb-1">Desenvolvedor PHP Sênior</h3>
-                                <p class="text-sm text-muted-foreground font-medium">TechCorp Solutions</p>
-                            </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        @foreach ($this->vacancies as $vacancy)
+                            <div
+                                class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
+                                <div class="mb-4">
+                                    <h3 class="text-lg font-semibold text-foreground mb-1">{{ $vacancy->title }}</h3>
+                                    <p class="text-sm text-muted-foreground font-medium">{{ $vacancy->company }}</p>
+                                </div>
 
-                            <div class="mb-4">
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">PHP
-                                        8.1</span>
-                                    <span
-                                        class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">Laravel</span>
-                                    <span
-                                        class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">MySQL</span>
-                                    <span
-                                        class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">Redis</span>
-                                    <span
-                                        class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">Docker</span>
+                                <div class="mb-4">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">
+                                            {{ $vacancy->stacks }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-4 mb-4 text-sm text-muted-foreground">
+                                    <div class="flex items-center space-x-1">
+                                        <x-svg.map-bin class="w-3.5 h-3.5 text-muted-foreground" />
+                                        <span>{{ $vacancy->city }}, {{ strtoupper($vacancy->state) }}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-1">
+                                        <x-svg.stopwatch class="w-3.5 h-3.5 text-muted-foreground" />
+                                        <span>{{ $vacancy->contract_type }} - {{ $vacancy->location }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between pt-4 border-t border-border">
+                                    <span class="text-xs text-muted-foreground"> {{ $vacancy->created_at }} </span>
+
+                                    <div class="flex space-x-2">
+                                        <button
+                                            class="flex items-center space-x-1 px-3 py-2 border border-border rounded-lg hover:bg-muted transition-colors text-sm">
+                                            <x-svg.external-link class="w-3.5 h-3.5" />
+                                            <span>Ver vaga</span>
+                                        </button>
+                                        <button
+                                            class="flex items-center space-x-1 px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
+                                            <x-svg.send class="w-3.5 h-3.5" />
+                                            <span>Candidatar-se</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="flex flex-wrap gap-4 mb-4 text-sm text-muted-foreground">
-                                <div class="flex items-center space-x-1">
-                                    <x-svg.map-bin class="w-3.5 h-3.5 text-muted-foreground" />
-                                    <span>São Paulo, SP</span>
-                                </div>
-                                <div class="flex items-center space-x-1">
-                                    <x-svg.stopwatch class="w-3.5 h-3.5 text-muted-foreground" />
-                                    <span>CLT - Remoto</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between pt-4 border-t border-border">
-                                <span class="text-xs text-muted-foreground">Há 2 dias</span>
-
-                                <div class="flex space-x-2">
-                                    <button
-                                        class="flex items-center space-x-1 px-3 py-2 border border-border rounded-lg hover:bg-muted transition-colors text-sm">
-                                        <x-svg.external-link class="w-3.5 h-3.5" />
-                                        <span>Ver vaga</span>
-                                    </button>
-                                    <button
-                                        class="flex items-center space-x-1 px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
-                                        <x-svg.send class="w-3.5 h-3.5" />
-                                        <span>Candidatar-se</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
+{{-- 
                         <div
                             class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
                             <div class="mb-4">
@@ -267,7 +262,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </section>
 
