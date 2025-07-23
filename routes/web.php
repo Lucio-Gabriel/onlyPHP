@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome', [
-            'vacancies' => 500,
-            'candidates' => 1200,
+        'vacancies'  => 500,
+        'candidates' => 1200,
     ]);
 })->name('welcome');
 

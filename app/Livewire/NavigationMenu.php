@@ -18,6 +18,7 @@ class NavigationMenu extends Component
     public function logout()
     {
         Auth::logout();
+
         return $this->redirect(route('login.candidate'), navigate: true);
     }
 
