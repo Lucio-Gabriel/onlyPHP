@@ -70,16 +70,16 @@
                                     Nome completo <span class="text-red-500">*</span>
                                 </label>
 
-                                <x-form.input 
-                                    id="name" 
-                                    name="name" 
+                                <x-form.input
+                                    id="name"
+                                    name="name"
                                     type="text"
-                                    placeholder="Seu nome completo" 
+                                    placeholder="Seu nome completo"
                                     wire:model="name"
                                 >
                                     <x-slot name="icon">
-                                        <x-svg.user 
-                                            class="w-5 h-5 text-gray-400" 
+                                        <x-svg.user
+                                            class="w-5 h-5 text-gray-400"
                                         />
                                     </x-slot>
                                 </x-form.input>
@@ -90,16 +90,16 @@
                                     Seu melhor email <span class="text-red-500">*</span>
                                 </label>
 
-                                <x-form.input 
-                                    id="email" 
-                                    name="email" 
+                                <x-form.input
+                                    id="email"
+                                    name="email"
                                     type="email"
-                                    placeholder="Seu melhor email" 
+                                    placeholder="Seu melhor email"
                                     wire:model="email"
                                 >
                                     <x-slot name="icon">
-                                        <x-svg.envelope 
-                                            class="w-5 h-5 text-gray-400" 
+                                        <x-svg.envelope
+                                            class="w-5 h-5 text-gray-400"
                                         />
                                     </x-slot>
                                 </x-form.input>
@@ -110,17 +110,17 @@
                                     Celular com DDD <span class="text-red-500">*</span>
                                 </label>
                                 <div class="w-full">
-                                    <x-form.input 
-                                        id="phone" 
-                                        name="phone" 
+                                    <x-form.input
+                                        id="phone"
+                                        name="phone"
                                         type="tel"
-                                        placeholder="(00) 00000-0000" 
-                                        wire:model="phone" 
+                                        placeholder="(00) 00000-0000"
+                                        wire:model="phone"
                                         class="flex-1 rounded-r-md"
                                     >
                                         <x-slot name="icon">
-                                            <x-svg.phone 
-                                                class="w-5 h-5 text-gray-400" 
+                                            <x-svg.phone
+                                                class="w-5 h-5 text-gray-400"
                                             />
                                         </x-slot>
                                     </x-form.input>
@@ -132,16 +132,16 @@
                                     LinkedIn <span class="text-red-500">*</span>
                                 </label>
 
-                                <x-form.input 
-                                    id="linkedin" 
-                                    name="linkedin" 
+                                <x-form.input
+                                    id="linkedin"
+                                    name="linkedin"
                                     type="url"
-                                    placeholder="https://linkedin.com/in/seu-perfil" 
+                                    placeholder="https://linkedin.com/in/seu-perfil"
                                     wire:model="linkedin"
                                 >
                                     <x-slot name="icon">
-                                        <x-svg.linkedin 
-                                            class="w-5 h-5 text-gray-400" 
+                                        <x-svg.linkedin
+                                            class="w-5 h-5 text-gray-400"
                                         />
                                     </x-slot>
                                 </x-form.input>
@@ -167,17 +167,17 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     Cidade <span class="text-red-500">*</span>
                                 </label>
->
-                                <x-form.input 
-                                    id="city" 
-                                    name="city" 
+
+                                <x-form.input
+                                    id="city"
+                                    name="city"
                                     type="text"
                                     placeholder="Informe sua cidade"
                                     wire:model="city"
                                 >
                                     <x-slot name="icon">
-                                        <x-svg.map-bin 
-                                            class="w-5 h-5 text-gray-400" 
+                                        <x-svg.map-bin
+                                            class="w-5 h-5 text-gray-400"
                                         />
                                     </x-slot>
                                 </x-form.input>
@@ -200,16 +200,16 @@
                                     Remuneração esperada <span class="text-red-500">*</span>
                                 </label>
 
-                                <x-form.input 
-                                    id="salary" 
+                                <x-form.input
+                                    id="salary"
                                     name="salary"
-                                    type="text" 
+                                    type="text"
                                     placeholder="R$ 0.000,00"
                                     wire:model="salary"
                                 >
                                     <x-slot name="icon">
-                                        <x-svg.currency-dollar 
-                                            class="w-5 h-5 text-gray-400" 
+                                        <x-svg.currency-dollar
+                                            class="w-5 h-5 text-gray-400"
                                         />
                                     </x-slot>
                                 </x-form.input>
@@ -238,9 +238,9 @@
 
                             <p class="text-xs text-gray-600 text-center">
                                 Ao fornecer seus dados pessoais, você concorda com o que está descrito
-                                nesta 
-                                <a 
-                                    href="#" 
+                                nesta
+                                <a
+                                    href="#"
                                     class="text-zallpy-purple underline"
                                 >
                                     Política de Privacidade
