@@ -4,10 +4,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome', [
-            'vacancies' => 500,
-            'candidates' => 1200,
+        'vacancies'  => 500,
+        'candidates' => 1200,
     ]);
 })->name('welcome');
+
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('linkedin')->redirect();
+})->name('auth.linkedin.redirect');
+
+Route::get('/auth/callback', \App\Livewire\Candidate\Auth\LinkedinCallback::class)
+    ->name('auth.linkedin.callback');
 
 Route::prefix('candidate')->group(function () {
     Route::get('/login', \App\Livewire\Candidate\Auth\Login::class)->name('login.candidate');
