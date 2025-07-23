@@ -60,7 +60,7 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-primary">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
+                    <a href="{{ route('index') }}" wire:navigate
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
 
                         <x-svg.ui-check

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -8,8 +9,6 @@ Route::get('/', function () {
         'candidates' => 1200,
     ]);
 })->name('welcome');
-
-use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('linkedin')->redirect();
@@ -26,4 +25,8 @@ Route::prefix('candidate')->group(function () {
     Route::get('/index', App\Livewire\Candidate\Index::class)
         ->middleware('auth')
         ->name('index');
+
+    Route::get('/aplications-vacancies', App\Livewire\Candidate\ApplyToVacancy::class)
+        ->middleware('auth')
+        ->name('applications.vacancies');
 });
