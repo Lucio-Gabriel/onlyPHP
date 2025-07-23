@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -8,8 +9,6 @@ Route::get('/', function () {
         'candidates' => 1200,
     ]);
 })->name('welcome');
-
-use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/auth/redirect', function () {
     return Socialite::driver('linkedin')->redirect();
