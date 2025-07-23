@@ -29,7 +29,7 @@ Na aba de projetos do github tem disponivel a aba de [Issues](https://github.com
    ```bash
    git clone https://github.com/seu-usuario/onlyPHP.git
     ```
-3. **Clone o repositório forkado**
+3. **Crie uma branch no repositório forkado**
 
     ```bash
    git checkout -b minha-contribuicao
