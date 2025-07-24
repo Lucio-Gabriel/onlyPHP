@@ -21,7 +21,7 @@
                         <div x-data="{ userDropdownOpen: false }" class="relative">
                             <button @click="userDropdownOpen = !userDropdownOpen"
                                 class="flex items-center space-x-2 p-2 rounded-md hover:bg-secondary focus:outline-none duration-300">
-                                <img src="https://i.pravatar.cc/150?img=3" alt="Avatar"
+                                <img src="{{ Auth::user()->avatar }}" alt="Avatar"
                                     class="w-8 h-8 rounded-full" />
                                 <span
                                     class="hidden md:inline text-sm text-white font-medium">{{ Auth::user()->name }}</span>
@@ -60,7 +60,7 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-primary">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
+                    <a href="{{ route('index') }}" wire:navigate
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
 
                         <x-svg.ui-check

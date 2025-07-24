@@ -99,16 +99,16 @@
                                             <x-svg.external-link class="w-3.5 h-3.5" />
                                             <span>Ver vaga</span>
                                         </button>
-                                        <button
+                                        <a href="{{ route('applications.vacancies') }}" wire:navigate
                                             class="flex items-center space-x-1 px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
                                             <x-svg.send class="w-3.5 h-3.5" />
                                             <span>Candidatar-se</span>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-{{-- 
+{{--
                         <div
                             class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
                             <div class="mb-4">
