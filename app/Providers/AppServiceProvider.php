@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
             $event->extendSocialite('linkedin', \SocialiteProviders\LinkedIn\Provider::class);
+            $event->extendSocialite('linkedin_recruiter', \SocialiteProviders\LinkedIn\Provider::class);
         });
     }
 }
