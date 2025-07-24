@@ -1,0 +1,93 @@
+name: CI - Tests e Pint
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    branches:
+      - main
+      - developer
+
+jobs:
+  backend_tests:
+    name: Run Tests, Pint and Pest
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: onlyphp
+          MYSQL_ROOT_PASSWORD: 123
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: onlyphp
+      DB_USERNAME: root
+      DB_PASSWORD: 123
+      REDIS_HOST: 127.0.0.1
+      REDIS_PORT: 6379
+
+    steps:
+      - name: Verify the PR title
+        uses: naveenk1223/action-pr-title@master
+        with:
+          regex: '.+' # Regex the title should match.
+          allowed_prefixes: 'feat,bugfix,hotfix,doc,chore' # title should start with the given prefix
+          prefix_case_sensitive: true # title prefix are case insensitive
+          min_length: 10 # Min length of the title
+          max_length: -1 # Max length of the title
+
+      - name: Code Checkout
+        uses: actions/checkout@v4
+
+      - name: Configuring PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo, pdo_mysql, swoole, redis
+          coverage: none
+
+      - name: Copy .env.test to .env
+        run: cp .env.test .env
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-
+
+      - name: Install composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Generate laravel key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate
+
+      - name: Run Pint (Lint)
+        run: vendor/bin/pint --test
+
+      - name: Run Pest (Tests)
+        run: vendor/bin/pest

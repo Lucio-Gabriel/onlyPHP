@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class ApplyToVacancy extends Component
 {
-
     #[Computed]
     public function vacancies()
     {
