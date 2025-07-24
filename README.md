@@ -45,6 +45,12 @@ Configure seu .env:
     cp .env.example .env
 ```
 
+Crie o banco de dados de exemplo (SQLITE):
+
+```bash
+    composer create-test-database
+```
+
 Execute as migrations:
 
 ```bash
