@@ -1,12 +1,9 @@
 <?php
 
+use App\Http\Controllers\Recruiter\Auth\Login as LoginRecruiter;
+use App\Http\Controllers\Recruiter\Auth\Register as RegisterRecruiter;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-
-use App\Http\Controllers\Recruiter\Auth\{
-    Login as LoginRecruiter,
-    Register as RegisterRecruiter
-};
 
 Route::get('/', function () {
     return view('welcome', [
@@ -36,7 +33,6 @@ Route::prefix('candidate')->group(function () {
         ->name('applications.vacancies');
 });
 
-
 Route::prefix('recruiter')->group(function () {
     Route::get('/login', LoginRecruiter::class)->name('login.recruiter');
     Route::get('/register', [RegisterRecruiter::class, 'index'])->name('register.recruiter');
@@ -44,7 +40,7 @@ Route::prefix('recruiter')->group(function () {
     Route::get('/auth/redirect', function () {
         return Socialite::driver('linkedin_recruiter')->redirect();
     })->name('auth.recruiter.linkedin.redirect');
-        
+
     Route::get('/auth/callback', [RegisterRecruiter::class, 'store'])
         ->name('auth.recruiter.linkedin.callback');
 });
