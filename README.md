@@ -45,6 +45,14 @@ Configure seu .env:
     cp .env.example .env
 ```
 
+> 👉 Ajuste o env para usar o seu banco de dados preferencial.
+
+Instale as bibliotecas:
+
+```bash
+    composer install && npm install
+```
+
 Execute as migrations:
 
 ```bash
@@ -57,6 +65,12 @@ Execute os seeders:
     php artisan db:seed
 ```
 
+Crie a chave de criptografia:
+
+```bash
+    php artisan key:generate
+```
+
 Execute os testes:
 
 ```bash
@@ -66,13 +80,13 @@ Execute os testes:
 Rode os servidores:
 
 ```bash
-    php artisan serve & npm run dev
+    composer run dev
 ```
 
 Acesse o sistema:
 
 ```bash
-    http://localhost
+    http://localhost:8000
 ```
 ## Contribuindo
 
