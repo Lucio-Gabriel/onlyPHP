@@ -39,18 +39,22 @@ Clone este repositório:
     git clone https://github.com/SeuUsuario/onlyPHP.git
 ```
 
+Instale as bibliotecas:
+
+```bash
+    composer install && npm install
+```
+
 Configure seu .env:
 
 ```bash
     cp .env.example .env
 ```
 
-> 👉 Ajuste o env para usar o seu banco de dados preferencial.
-
-Instale as bibliotecas:
+Crie o banco de dados de exemplo (SQLITE):
 
 ```bash
-    composer install && npm install
+    composer create-test-database
 ```
 
 Execute as migrations:
