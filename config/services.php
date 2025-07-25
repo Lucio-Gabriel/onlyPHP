@@ -41,4 +41,10 @@ return [
         'redirect'      => env('LINKEDIN_REDIRECT_URI'),
     ],
 
+    'linkedin_recruiter' => [
+        'client_id'     => env('LINKEDIN_RECRUITER_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_RECRUITER_CLIENT_SECRET'),
+        'redirect'      => env('LINKEDIN_RECRUITER_REDIRECT_URI'),
+    ],
+
 ];

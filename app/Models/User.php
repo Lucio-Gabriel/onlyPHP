@@ -74,4 +74,20 @@ class User extends Authenticatable
             'password'          => 'hashed',
         ];
     }
+
+    /**
+     * Determine if the user is a candidate.
+     */
+    public function isCandidate(): bool
+    {
+        return $this->is_candidate;
+    }
+
+    /**
+     * Determine if the user is a recruiter.
+     */
+    public function isRecruiter(): bool
+    {
+        return $this->is_recruiter;
+    }
 }

@@ -5,15 +5,7 @@
         <div class="bg-background font-sans">
             <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <section class="mb-8">
-                    <h2 class="text-2xl font-bold text-foreground mb-6">
-
-                        @if (Auth::check() && Auth::user()->isCandidate())
-                            Área do Candidato
-                        @else
-                            Área do Recrutador
-                        @endif
-
-                    </h2>
+                    <h2 class="text-2xl font-bold text-foreground mb-6">Sua Dashboard</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div
                             class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">

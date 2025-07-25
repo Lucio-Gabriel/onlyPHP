@@ -1226,7 +1226,7 @@
                         class="text-gray-600 hover:text-secondary transition-colors">
                         Sou candidato
                     </a>
-                    <a href="register.html" class="text-gray-600 hover:text-secondary transition-colors">
+                    <a href="{{ route('login.recruiter') }}" class="text-gray-600 hover:text-secondary transition-colors">
                         Sou recrutador
                     </a>
                 </nav>
