@@ -26,17 +26,6 @@ class Login extends Component
         ];
     }
 
-//    /** isto é apenas um workaround provisório
-//     *
-//     **/
-//
-//    public function mount()
-//    {
-//        if (Auth::check()) {
-//            return redirect()->route('index');
-//        }
-//    }
-
     public function login()
     {
         $this->validate();
