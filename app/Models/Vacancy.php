@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vacancy extends Model
@@ -21,6 +23,7 @@ class Vacancy extends Model
         'type',
         'contract_type',
         'location',
+        'user_id',
     ];
 
     protected $casts = [
@@ -28,4 +31,14 @@ class Vacancy extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function appliers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_vacancy', 'vacancy_id', 'user_id');
+    }
 }
