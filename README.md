@@ -45,6 +45,18 @@ Configure seu .env:
     cp .env.example .env
 ```
 
+Instale as bibliotecas:
+
+```bash
+    composer install && npm install
+```
+
+Crie a chave de criptografia:
+
+```bash
+    php artisan key:generate
+```
+
 Crie o banco de dados de exemplo (SQLITE):
 
 ```bash
@@ -72,13 +84,13 @@ Execute os testes:
 Rode os servidores:
 
 ```bash
-    php artisan serve & npm run dev
+    composer run dev
 ```
 
 Acesse o sistema:
 
 ```bash
-    http://localhost
+    http://localhost:8000
 ```
 ## Contribuindo
 
