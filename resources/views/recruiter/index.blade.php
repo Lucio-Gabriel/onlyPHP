@@ -5,15 +5,7 @@
         <div class="bg-background font-sans">
             <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <section class="mb-8">
-                    <h2 class="text-2xl font-bold text-foreground mb-6">
-
-                        @if (Auth::check() && Auth::user()->isCandidate())
-                            Área do Candidato
-                        @else
-                            Área do Recrutador
-                        @endif
-
-                    </h2>
+                    <h2 class="text-2xl font-bold text-foreground mb-6">Sua Dashboard</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div
                             class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
@@ -107,7 +99,7 @@
                                             <x-svg.external-link class="w-3.5 h-3.5" />
                                             <span>Ver vaga</span>
                                         </button>
-                                        <a href="{{ route('applications.vacancies', $vacancy) }}" wire:navigate
+                                        <a href="{{ route('applications.vacancies') }}" wire:navigate
                                             class="flex items-center space-x-1 px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
                                             <x-svg.send class="w-3.5 h-3.5" />
                                             <span>Candidatar-se</span>
@@ -286,7 +278,7 @@
                         Explorar Todas as Vagas
                     </button>
                 </section>
-            </main>
+            </mai>
         </div>
     </x-main-content>
 </div>

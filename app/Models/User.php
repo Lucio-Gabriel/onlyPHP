@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password',
         'avatar',
         'user_type',
+        'is_candidate',
+        'is_recruiter',
+        'linkedin_id',
+        'linkedin_token',
     ];
 
     /**
@@ -53,6 +57,7 @@ class User extends Authenticatable
         ];
     }
 
+
     public function vacancies(): HasMany
     {
         return $this->hasMany(Vacancy::class);
@@ -61,5 +66,20 @@ class User extends Authenticatable
     public function applied_vacancies(): BelongsToMany
     {
         return $this->belongsToMany(Vacancy::class, 'user_vacancy', 'user_id', 'vacancy_id');
+
+    /**
+     * Determine if the user is a candidate.
+     */
+    public function isCandidate(): bool
+    {
+        return $this->is_candidate;
+    }
+
+    /**
+     * Determine if the user is a recruiter.
+     */
+    public function isRecruiter(): bool
+    {
+        return $this->is_recruiter;
     }
 }
