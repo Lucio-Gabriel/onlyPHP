@@ -9,7 +9,7 @@ use Livewire\Livewire;
 uses(RefreshDatabase::class);
 
 it('must be able to log in', function () {
-    $user = User::create([
+    $user = User::factory()->admin()->create([
         'name'     => 'John',
         'email'    => 'john@example.com',
         'password' => Hash::make('password'),
