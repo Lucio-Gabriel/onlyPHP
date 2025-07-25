@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,6 +28,7 @@ class VacancyFactory extends Factory
             'type'          => $this->faker->randomElement(['full-time', 'part-time', 'contract', 'temporary']),
             'contract_type' => $this->faker->randomElement(['pj', 'clt', 'trainee']),
             'location'      => $this->faker->randomElement(['remote', 'hybrid', 'on-site']),
+            'user_id'       => User::factory(),
         ];
     }
 }

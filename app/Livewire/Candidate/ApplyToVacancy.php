@@ -4,15 +4,23 @@ namespace App\Livewire\Candidate;
 
 use App\Models\Vacancy;
 use Illuminate\View\View;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class ApplyToVacancy extends Component
 {
-    #[Computed]
-    public function vacancies()
+    public Vacancy $vacancy;
+
+    public function mount(Vacancy $vacancy): void
     {
-        return Vacancy::limit(1)->get();
+        $this->vacancy = $vacancy;
+    }
+
+    public function apply(): Redirector
+    {
+        auth()->user()->applied_vacancies()->syncWithoutDetaching([$this->vacancy->getKey()]);
+
+        return redirect()->route('index');
     }
 
     public function render(): View

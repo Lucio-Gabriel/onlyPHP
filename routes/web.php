@@ -28,7 +28,7 @@ Route::prefix('candidate')->group(function () {
         ->middleware('auth')
         ->name('index');
 
-    Route::get('/aplications-vacancies', App\Livewire\Candidate\ApplyToVacancy::class)
+    Route::get('/aplications-vacancies/{vacancy}', App\Livewire\Candidate\ApplyToVacancy::class)
         ->middleware('auth')
         ->name('applications.vacancies');
 });
