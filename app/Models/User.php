@@ -66,7 +66,7 @@ class User extends Authenticatable
     public function applied_vacancies(): BelongsToMany
     {
         return $this->belongsToMany(Vacancy::class, 'user_vacancy', 'user_id', 'vacancy_id');
-
+    }
     /**
      * Determine if the user is a candidate.
      */
