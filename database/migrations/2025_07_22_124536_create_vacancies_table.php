@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->enum('type', ['full-time', 'part-time', 'contract', 'temporary'])->default('full-time');
             $table->enum('contract_type', ['pj', 'clt', 'trainee'])->default('pj');
             $table->enum('location', ['remote', 'hybrid', 'on-site'])->default('on-site');
+            $table->foreignIdFor(User::class, 'user_id');
             $table->timestamps();
             $table->softDeletes();
         });
