@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Candidate\Auth;
 
+use App\Enums\User\UserTypeEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -49,9 +50,10 @@ class Register extends Component
         $this->validate();
 
         $user = User::query()->create([
-            'name'     => $this->name,
-            'email'    => $this->email,
-            'password' => Hash::make($this->password),
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'user_type' => UserTypeEnum::Candidate,
+            'password'  => Hash::make($this->password),
         ]);
 
         Auth::login($user, $this->remember);
