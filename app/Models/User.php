@@ -3,10 +3,32 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
+/**
+ * User model representing authenticated users in the system.
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $linkedin_id
+ * @property string $linkedin_token
+ * @property bool $is_candidate
+ * @property bool $is_recruiter
+ * @property bool $is_admin
+ * @property string|null $avatar
+ * @property string $password
+ * @property string|null $remember_token
+ * @property Carbon|null $email_verified_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
+ * @mixin Builder
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
