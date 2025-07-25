@@ -19,6 +19,7 @@ class ApplyToVacancy extends Component
     public function apply(): Redirector
     {
         auth()->user()->applied_vacancies()->syncWithoutDetaching([$this->vacancy->getKey()]);
+
         return redirect()->route('index');
     }
 
