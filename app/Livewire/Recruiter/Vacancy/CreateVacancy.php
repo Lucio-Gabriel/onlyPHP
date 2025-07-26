@@ -7,6 +7,7 @@ use App\Enums\Vacancy\VacancyLocationEnum;
 use App\Enums\Vacancy\VacancyTypeEnum;
 use App\Models\Vacancy;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -47,7 +48,7 @@ class CreateVacancy extends Component
             'city'          => $this->city,
             'state'         => $this->state,
             'company'       => $this->company,
-            'stack'         => $this->stacks,
+            'stacks'        => $this->stacks,
             'salary'        => $this->salary,
             'type'          => $this->type,
             'contract_type' => $this->contract_type,
@@ -99,8 +100,12 @@ class CreateVacancy extends Component
         ];
     }
 
-    public function render()
+    public function render(): View
     {
-        return view('livewire.recruiter.vacancy.create-vacancy');
+        return view('livewire.recruiter.vacancy.create-vacancy', [
+            'contract_types' => VacancyContractTypeEnum::cases(),
+            'types'          => VacancyTypeEnum::cases(),
+            'locations'      => VacancyLocationEnum::cases(),
+        ]);
     }
 }
