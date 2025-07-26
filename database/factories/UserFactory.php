@@ -46,6 +46,8 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'is_recruiter' => true,
+            'is_candidate' => false,
+            'is_admin'     => false,
         ]);
     }
 
@@ -53,13 +55,17 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'is_candidate' => true,
+            'is_recruiter' => false,
+            'is_admin'     => false,
         ]);
     }
 
     public function admin(): static
     {
         return $this->state(fn (array $attributes) => [
-            'is_admin' => true,
+            'is_admin'     => true,
+            'is_candidate' => false,
+            'is_recruiter' => false,
         ]);
     }
 }

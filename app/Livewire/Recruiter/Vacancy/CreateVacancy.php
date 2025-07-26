@@ -6,6 +6,7 @@ use App\Enums\Vacancy\VacancyContractTypeEnum;
 use App\Enums\Vacancy\VacancyLocationEnum;
 use App\Enums\Vacancy\VacancyTypeEnum;
 use App\Models\Vacancy;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -32,8 +33,12 @@ class CreateVacancy extends Component
 
     public string $location;
 
+    /**
+     * @throws AuthorizationException
+     */
     public function save(): Redirector
     {
+        $this->authorize('create', Vacancy::class);
         $this->validate();
 
         Vacancy::query()->create([

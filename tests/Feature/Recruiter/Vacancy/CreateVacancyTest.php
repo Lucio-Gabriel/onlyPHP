@@ -11,6 +11,7 @@ use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
 
 it('should create a vacancy being a recruiter', function (): void {
     $recruiter = User::factory()->recruiter()->create();
@@ -53,6 +54,48 @@ it('should create a vacancy being a recruiter', function (): void {
         'location'      => 'remote',
     ]);
 
+});
+
+test('candidate cannot create a vacancy', function (): void {
+    $candidate = User::factory()->candidate()->create();
+
+    Livewire::actingAs($candidate)
+        ->test(CreateVacancy::class)
+        ->set('title', 'vacancy-title')
+        ->assertSet('title', 'vacancy-title')
+        ->set('description', 'vacancy-description')
+        ->assertSet('description', 'vacancy-description')
+        ->set('city', 'vacancy-city')
+        ->assertSet('city', 'vacancy-city')
+        ->set('stacks', 'Laravel')
+        ->assertSet('stacks', 'Laravel')
+        ->set('state', 'SP')
+        ->assertSet('state', 'SP')
+        ->set('company', 'vacancy-company')
+        ->assertSet('company', 'vacancy-company')
+        ->set('salary', '5000')
+        ->assertSet('salary', '5000')
+        ->set('type', VacancyTypeEnum::FullTime)
+        ->assertSet('type', VacancyTypeEnum::FullTime->value)
+        ->set('contract_type', VacancyContractTypeEnum::Clt)
+        ->assertSet('contract_type', VacancyContractTypeEnum::Clt->value)
+        ->set('location', VacancyLocationEnum::Remote)
+        ->assertSet('location', VacancyLocationEnum::Remote->value)
+        ->call('save')
+        ->assertForbidden();
+
+    assertDatabaseCount(Vacancy::class, 0);
+    assertDatabaseMissing(Vacancy::class, [
+        'title'         => 'vacancy-title',
+        'description'   => 'vacancy-description',
+        'city'          => 'vacancy-city',
+        'state'         => 'SP',
+        'company'       => 'vacancy-company',
+        'salary'        => '5000',
+        'type'          => 'full-time',
+        'contract_type' => 'clt',
+        'location'      => 'remote',
+    ]);
 });
 
 describe('validation tests', function () {
