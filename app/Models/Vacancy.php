@@ -40,7 +40,7 @@ class Vacancy extends Model
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function appliers(): BelongsToMany
