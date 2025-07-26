@@ -26,7 +26,7 @@ Route::prefix('candidate')->group(function () {
     Route::get('/', function () {
         return redirect()->route('index');
     });
-  
+
     Route::get('/login', Login::class)
         ->middleware('redirect.authenticated.candidate')
         ->name('login.candidate');
