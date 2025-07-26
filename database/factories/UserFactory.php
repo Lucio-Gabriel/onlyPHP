@@ -41,4 +41,25 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function recruiter(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_recruiter' => true,
+        ]);
+    }
+
+    public function candidate(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_candidate' => true,
+        ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_admin' => true,
+        ]);
+    }
 }
