@@ -26,6 +26,7 @@ Route::prefix('candidate')->group(function () {
     Route::get('/', function () {
         return redirect()->route('index');
     });
+  
     Route::get('/login', Login::class)
         ->middleware('redirect.authenticated.candidate')
         ->name('login.candidate');
@@ -38,7 +39,7 @@ Route::prefix('candidate')->group(function () {
         ->middleware('auth.candidate')
         ->name('index');
 
-    Route::get('/aplications-vacancies', App\Livewire\Candidate\ApplyToVacancy::class)
+    Route::get('/aplications-vacancies/{vacancy}', App\Livewire\Candidate\ApplyToVacancy::class)
         ->middleware('auth.candidate')
         ->name('applications.vacancies');
 });
