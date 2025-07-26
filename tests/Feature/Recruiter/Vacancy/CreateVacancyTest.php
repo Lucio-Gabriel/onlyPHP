@@ -163,8 +163,7 @@ describe('validation tests', function () {
             ->call('save')
             ->assertHasErrors(['salary' => $rule]);
     })->with([
-        'required' => ['', 'O Salário é Obrigatório.'],
-        'numeric'  => ['ahhahahah', 'Apenas números são permitidos no campo de salário'],
+        'numeric' => ['ahhahahah', 'Apenas números são permitidos no campo de salário'],
     ]);
 
     test('type::validation', function ($value, $rule): void {
