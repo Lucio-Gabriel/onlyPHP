@@ -12,7 +12,7 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 
 it('should create a vacancy being a recruiter', function (): void {
-    $recruiter = User::factory()->create();
+    $recruiter = User::factory()->recruiter()->create();
 
     Livewire::actingAs($recruiter)
         ->test(CreateVacancy::class)

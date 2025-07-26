@@ -17,8 +17,8 @@
 
                         <div class="flex items-center text-sm text-gray-600">
                             <x-svg.stopwatch class="w-4 h-4 mr-1 text-muted-foreground"/>
-                            <span>{{ strtoupper($vacancy->contract_type) }} •
-                                    {{ strtoupper($vacancy->location) }}</span>
+                            <span>{{ strtoupper($vacancy->contract_type->value) }} •
+                                    {{ strtoupper($vacancy->location->value) }}</span>
                         </div>
                     </div>
 
