@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\Vacancy\VacancyContractTypeEnum;
+use App\Enums\Vacancy\VacancyLocationEnum;
+use App\Enums\Vacancy\VacancyTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,14 +30,17 @@ class Vacancy extends Model
     ];
 
     protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
+        'created_at'    => 'datetime',
+        'updated_at'    => 'datetime',
+        'deleted_at'    => 'datetime',
+        'contract_type' => VacancyContractTypeEnum::class,
+        'type'          => VacancyTypeEnum::class,
+        'location'      => VacancyLocationEnum::class,
     ];
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function appliers(): BelongsToMany
