@@ -40,19 +40,4 @@ class VacancyPolicy
         return $user->isRecruiter() && $vacancy->owner->id === $user->getKey();
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Vacancy $vacancy): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Vacancy $vacancy): bool
-    {
-        return false;
-    }
 }
