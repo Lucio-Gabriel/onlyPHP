@@ -70,6 +70,14 @@ class User extends Authenticatable
         return $this->is_recruiter;
     }
 
+    /**
+     * Relationships
+    */
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
     public function vacancies(): HasMany
     {
         return $this->hasMany(Vacancy::class);
