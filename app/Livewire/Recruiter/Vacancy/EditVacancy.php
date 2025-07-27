@@ -47,6 +47,7 @@ class EditVacancy extends Component
             'contract_type' => $this->form->contract_type,
             'location'      => $this->form->location,
         ]);
+
         return redirect()->to(route('vacancies.index.recruiter'));
     }
 
