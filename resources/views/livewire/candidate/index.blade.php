@@ -15,27 +15,84 @@
 
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div
-                            class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
+                        <div class="bg-card rounded-xl border border-border p-6 hover:shadow-lg relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity">
+                            </div>
+                            
                             <div class="flex items-center justify-between">
                                 <div class="flex-1">
-                                    <p class="text-sm font-medium text-muted-foreground mb-1">Candidaturas Feitas</p>
-                                    <p class="text-3xl font-bold text-foreground mb-1 text-primary">24</p>
-                                    <p class="text-xs text-muted-foreground">Este mês</p>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <p class="text-sm font-medium text-muted-foreground">Realizadas</p>
+                                    </div>
+                                    @php
+                                        $appliedVacancies = Auth::user()->applied_vacancies->count();
+                                    @endphp
+
+                                    @if ($appliedVacancies > 0)
+                                        <div class="flex flex-col gap-3">
+                                            <p class="text-3xl font-bold text-foreground mb-1 text-primary group-hover:scale-105 applied-vacancies">
+                                                {{ $appliedVacancies }}
+                                            </p>
+                                            <p class="text-xs text-muted-foreground">
+                                                @if ($appliedVacancies === 1)
+                                                    {{ $appliedVacancies }} candidatura realizada
+                                                @else
+                                                    {{ $appliedVacancies }} candidaturas realizadas
+                                                @endif
+                                            </p>
+                                        </div>
+                                    @else
+                                        <div class="flex flex-col gap-3">
+                                            <p class="text-3xl font-bold text-foreground mb-1 text-primary">
+                                                {{ $appliedVacancies }}
+                                            </p>
+                                            <p class="text-xs text-muted-foreground">
+                                                Comece sua busca por oportunidades
+                                            </p>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                                    <x-svg.send class="w-6 h-6 text-primary" />
+                                
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 group-hover:scale-110">
+                                    <x-svg.send class="w-6 h-6 text-primary group-hover:text-primary/80 transition-colors duration-200" />
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
 
-                        <div
-                            class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
+                        <div class="bg-card rounded-xl border border-border p-6 hover:shadow-lg">
                             <div class="flex items-center justify-between">
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-muted-foreground mb-1">Em Análise</p>
-                                    <p class="text-3xl font-bold text-foreground mb-1 text-primary">8</p>
-                                    <p class="text-xs text-muted-foreground">Aguardando retorno</p>
+                                    @php
+                                        $inReviewApplications = Auth::user()
+                                            ->applied_vacancies()
+                                            ->wherePivot('status', $ApplicationStatus::IN_REVIEW->value)
+                                            ->count();
+                                    @endphp
+
+                                    @if ($inReviewApplications > 0)
+                                        <div class="flex flex-col gap-3">
+                                            <p class="text-3xl font-bold text-foreground mb-1 text-primary ">
+                                                {{ $inReviewApplications }}
+                                            </p>
+                                            <p class="text-xs text-muted-foreground">
+                                                @if ($inReviewApplications === 1)
+                                                    {{ $inReviewApplications }} candidatura em análise
+                                                @else
+                                                    {{ $inReviewApplications }} candidaturas em análise
+                                                @endif
+                                            </p>
+                                        </div>
+                                    @else
+                                        <div class="flex flex-col gap-3">
+                                            <p class="text-3xl font-bold text-foreground mb-1 text-primary ">
+                                                {{ $inReviewApplications }}
+                                            </p>
+                                            <p class="text-xs text-muted-foreground">
+                                                Nenhuma candidatura em análise
+                                            </p>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                                     <x-svg.stopwatch class="w-6 h-6 text-primary" />
@@ -48,8 +105,36 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex-1">
                                     <p class="text-sm font-medium text-muted-foreground mb-1">Respondidas</p>
-                                    <p class="text-3xl font-bold text-foreground mb-1 text-primary">5</p>
-                                    <p class="text-xs text-muted-foreground">Últimos 30 dias</p>
+                                        @php
+                                            $respondedApplications = Auth::user()
+                                                ->applied_vacancies()
+                                                ->wherePivot('status', $ApplicationStatus::RESPONDED->value)
+                                                ->count();
+                                        @endphp
+
+                                        @if ($respondedApplications > 0)
+                                            <div class="flex flex-col gap-3">
+                                                <p class="text-3xl font-bold text-foreground mb-1 text-primary group-hover:scale-105 transition-transform duration-200">
+                                                    {{ $respondedApplications }}
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">
+                                                    @if ($respondedApplications === 1)
+                                                        {{ $respondedApplications }} candidatura respondida
+                                                    @else
+                                                        {{ $respondedApplications }} candidaturas respondidas
+                                                    @endif
+                                                </p>
+                                            </div>
+                                        @else
+                                            <div class="flex flex-col gap-3">
+                                                <p class="text-3xl font-bold text-foreground mb-1 text-primary group-hover:scale-105 transition-transform duration-200">
+                                                    {{ $respondedApplications }}
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">
+                                                    Nenhuma candidatura respondida
+                                                </p>
+                                            </div>
+                                        @endif
                                 </div>
                                 <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                                     <x-svg.arrow-trending-up class="w-6 h-6 text-primary" />

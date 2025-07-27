@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
         Schema::create('user_vacancy', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class, 'user_id');
             $table->foreignIdFor(Vacancy::class, 'vacancy_id');
+            $table->string('status')->default('applied');
             $table->timestamps();
         });
     }

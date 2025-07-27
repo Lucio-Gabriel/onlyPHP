@@ -91,6 +91,11 @@ class User extends Authenticatable
         return $this->is_recruiter;
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->is_admin;
+    }
+
     public function vacancies(): HasMany
     {
         return $this->hasMany(Vacancy::class);

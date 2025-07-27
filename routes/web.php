@@ -5,6 +5,10 @@ use App\Http\Controllers\Recruiter\Auth\Register as RegisterRecruiter;
 use App\Livewire\Candidate\Auth\LinkedinCallback;
 use App\Livewire\Candidate\Auth\Login;
 use App\Livewire\Candidate\Auth\Register;
+feat/Add-candidate-middleware-and-routes-integration-for-authentication-and-redirection
+use App\Livewire\Recruiter\Vacancy\CreateVacancy;
+use App\Livewire\Recruiter\Vacancy\EditVacancy;
+use App\Livewire\Recruiter\Vacancy\ListVacancy;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -23,6 +27,7 @@ Route::get('/auth/callback', LinkedinCallback::class)
     ->name('auth.linkedin.callback');
 
 Route::prefix('candidate')->group(function () {
+
     Route::get('/', function () {
         return redirect()->route('index');
     });
@@ -45,6 +50,10 @@ Route::prefix('candidate')->group(function () {
 Route::prefix('recruiter')->group(function () {
     Route::get('/login', LoginRecruiter::class)->name('login.recruiter');
     Route::get('/register', [RegisterRecruiter::class, 'index'])->name('register.recruiter');
+
+    Route::get('/vacancies/create', CreateVacancy::class)->name('vacancies.store.recruiter')->middleware('auth');
+    Route::get('/vacancies/', ListVacancy::class)->name('vacancies.index.recruiter')->middleware('auth');
+    Route::get('/vacancies/edit/{vacancy}', EditVacancy::class)->name('vacancies.edit.recruiter')->middleware('auth');
 
     Route::get('/auth/redirect', function () {
         return Socialite::driver('linkedin_recruiter')->redirect();
