@@ -21,8 +21,12 @@
                         <div x-data="{ userDropdownOpen: false }" class="relative">
                             <button @click="userDropdownOpen = !userDropdownOpen"
                                 class="flex items-center space-x-2 p-2 rounded-md hover:bg-secondary focus:outline-none duration-300">
-                                <img src="{{ Auth::user()->avatar }}" alt="Avatar"
-                                    class="w-8 h-8 rounded-full" />
+                                @if (Auth::user()->avatar === null)
+                                    <img src="{{ asset('images/ephante.png') }}" alt="Avatar"
+                                        class="w-8 h-8 rounded-full" />
+                                @else
+                                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="w-8 h-8 rounded-full" />
+                                @endif
                                 <span
                                     class="hidden md:inline text-sm text-white font-medium">{{ Auth::user()->name }}</span>
                                 <x-svg.arrow-low class="w-4 h-4 text-white" />
@@ -32,7 +36,7 @@
                                 class="absolute right-0 border border-b-secondary mt-2 w-48 bg-primary rounded-md shadow-lg z-50">
                                 <ul class="py-1 text-sm text-gray-700">
                                     <li>
-                                        <a href="#"
+                                        <a href="{{ route('candidate.profile') }}" wire:navigate
                                             class="text-white block px-4 py-2 hover:bg-secondary duration-300">Perfil</a>
                                     </li>
                                     <li>
@@ -99,7 +103,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('candidate.profile') }}" wire:navigate
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
                         <x-svg.person-lines-fill
                             class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />

@@ -3,6 +3,7 @@
 namespace App\Livewire\Candidate\Auth;
 
 use App\Models\User;
+use App\Models\CandidateProfile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -53,7 +54,11 @@ class Register extends Component
             'email'    => $this->email,
             'password' => Hash::make($this->password),
         ]);
-
+        $profile = CandidateProfile::query()->create([
+            'user_id' => $user->id,
+            'full_name' => $this->name,
+            'email' => $this->email,
+        ]);
         Auth::login($user, $this->remember);
 
         session()->flash('message', 'Conta criada com sucesso.');

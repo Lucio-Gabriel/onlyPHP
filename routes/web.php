@@ -31,6 +31,10 @@ Route::prefix('candidate')->group(function () {
     Route::get('/aplications-vacancies', App\Livewire\Candidate\ApplyToVacancy::class)
         ->middleware('auth')
         ->name('applications.vacancies');
+
+    Route::get('/profile', App\Livewire\Candidate\Profile::class)
+        ->middleware('auth')
+        ->name('candidate.profile');
 });
 
 Route::prefix('recruiter')->group(function () {
