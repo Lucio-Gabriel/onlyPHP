@@ -39,5 +39,4 @@ class VacancyPolicy
     {
         return $user->isRecruiter() && $vacancy->owner->id === $user->getKey();
     }
-
 }
