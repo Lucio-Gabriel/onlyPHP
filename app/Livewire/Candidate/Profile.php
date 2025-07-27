@@ -10,7 +10,6 @@ use Livewire\Attributes\Computed;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\ValidationException; // Importar explicitamente
 
 class Profile extends Component
 {
@@ -26,19 +25,12 @@ class Profile extends Component
     public $portfolio_link;
     public $linkedin_link;
 
-    /**
-     * Computed property to get the candidate's profile.
-     * Returns a single CandidateProfile model instance or null.
-     */
     #[Computed]
     public function profile()
     {
         return CandidateProfile::query()->where('user_id', Auth::user()->id)->first();
     }
 
-    /**
-     * Monta o componente, inicializando as propriedades com os dados do perfil existente.
-     */
     public function mount()
     {
         $profile = $this->profile();
@@ -53,17 +45,13 @@ class Profile extends Component
         }
     }
 
-    /**
-     * Handles the resume file upload to S3 and updates the profile.
-     */
     public function uploadResume()
     {
-        // Valida o arquivo carregado
         $this->validate([
-            'resumeFile' => 'required|mimes:pdf,doc,docx|max:2048', // Max 2MB file size
+            'resumeFile' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        try { // Manter o try-catch para operações de S3 e DB, mas não para a validação
+        try {
             $profile = $this->profile();
 
             if (!$profile) {
@@ -73,12 +61,10 @@ class Profile extends Component
                 return;
             }
 
-            // Se já existe um currículo, exclua o antigo do S3
             if ($profile->resume_path) {
                 Storage::disk('s3')->delete($profile->resume_path);
             }
 
-            // Store the file on the 's3' disk.
             $path = $this->resumeFile->storePublicly('resumes', 's3');
 
             $profile->update([
@@ -87,26 +73,21 @@ class Profile extends Component
             ]);
             $this->dispatch('message', message: 'Currículo enviado com sucesso para o S3!');
 
-            // Reset the file input field
             $this->resumeFile = null;
 
         } catch (\Exception $e) {
-            // Catch any other general exceptions during the process (e.g., S3 connection issues)
             $this->dispatch('error', message: 'Ocorreu um erro ao enviar o currículo: ' . $e->getMessage());
             Log::error('Error uploading resume:', ['message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine(), 'user_id' => Auth::user()->id]);
         }
     }
 
-    /**
-     * Handles the profile picture upload to S3 and updates the profile.
-     */
     public function uploadProfilePicture()
     {
         $this->validate([
-            'profilePictureFile' => 'required|image|max:2048', // Max 2MB, apenas imagens
+            'profilePictureFile' => 'required|image|max:2048',
         ]);
 
-        try { // Manter o try-catch para operações de S3 e DB, mas não para a validação
+        try {
             $profile = $this->profile();
 
             if (!$profile) {
@@ -116,7 +97,6 @@ class Profile extends Component
                 return;
             }
 
-            // Se já existe uma foto de perfil, exclua a antiga do S3
             if ($profile->profile_picture_path) {
                 Storage::disk('s3')->delete($profile->profile_picture_path);
             }
@@ -128,29 +108,25 @@ class Profile extends Component
             ]);
             $this->dispatch('message', message: 'Foto de perfil enviada com sucesso para o S3!');
 
-            $this->profilePictureFile = null; // Reset the file input
+            $this->profilePictureFile = null;
         } catch (\Exception $e) {
             $this->dispatch('error', message: 'Ocorreu um erro ao enviar a foto de perfil: ' . $e->getMessage());
             Log::error('Error uploading profile picture:', ['message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine(), 'user_id' => Auth::user()->id]);
         }
     }
-
-    /**
-     * Updates the candidate's profile data.
-     */
     public function updateProfile()
     {
         $this->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'main_stack' => 'nullable|array',
-            'main_stack.*' => 'string|max:255', // Valida cada item do array
+            'main_stack.*' => 'string|max:255',
             'github_link' => 'nullable|url|max:255',
             'portfolio_link' => 'nullable|url|max:255',
             'linkedin_link' => 'nullable|url|max:255',
         ]);
 
-        try { // Manter o try-catch para operações de DB, mas não para a validação
+        try {
             $profile = $this->profile();
 
             if ($profile) {
@@ -164,7 +140,6 @@ class Profile extends Component
                 ]);
                 $this->dispatch('message', message: 'Dados do perfil atualizados com sucesso!');
             } else {
-                // Se o perfil não existe, crie um novo
                 CandidateProfile::create([
                     'user_id' => Auth::user()->id,
                     'full_name' => $this->full_name,
@@ -176,8 +151,6 @@ class Profile extends Component
                 ]);
                 $this->dispatch('message', message: 'Perfil criado com sucesso!');
             }
-
-            // Recompute the profile property to reflect changes immediately
             $this->profile = $this->profile();
 
         } catch (\Exception $e) {
@@ -186,13 +159,8 @@ class Profile extends Component
         }
     }
 
-
-    /**
-     * Renders the Livewire component view.
-     */
     public function render(): View
     {
-        // Pass the computed profile to the view
         return view('livewire.candidate.profile', [
             'profile' => $this->profile(),
             'resumeUrl' => $this->profile() ? $this->profile()->resume_url : null,
