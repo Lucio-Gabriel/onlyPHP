@@ -5,7 +5,6 @@ use App\Http\Controllers\Recruiter\Auth\Register as RegisterRecruiter;
 use App\Livewire\Candidate\Auth\LinkedinCallback;
 use App\Livewire\Candidate\Auth\Login;
 use App\Livewire\Candidate\Auth\Register;
-feat/Add-candidate-middleware-and-routes-integration-for-authentication-and-redirection
 use App\Livewire\Recruiter\Vacancy\CreateVacancy;
 use App\Livewire\Recruiter\Vacancy\EditVacancy;
 use App\Livewire\Recruiter\Vacancy\ListVacancy;
