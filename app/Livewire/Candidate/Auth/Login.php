@@ -27,6 +27,9 @@ class Login extends Component
         ];
     }
 
+    /**
+     * @return void|RedirectResponse
+     */
     public function mount()
     {
         if (Auth::check()) {
@@ -34,6 +37,9 @@ class Login extends Component
         }
     }
 
+    /**
+     * @return void|RedirectResponse
+     */
     public function login()
     {
         $this->validate();
