@@ -58,13 +58,7 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw'                   => true,
             'report'                  => false,
-            'checksum' => false,
-            'options' => [
-                'http' => [
-                    'verify' => false,
-                ],
-            ],
-            'scheme'  => 'http',
+            'scheme'                  => env('AWS_SCHEME', 'https'),
         ],
 
     ],
