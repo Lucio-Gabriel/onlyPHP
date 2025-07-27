@@ -16,7 +16,7 @@
                                 name="titulo"
                                 type="text"
                                 placeholder="Título da Vaga"
-                                wire:model="title"
+                                wire:model="form.title"
                             >
                                 <x-slot name="icon">
                                     <x-svg.user
@@ -24,7 +24,7 @@
                                     />
                                 </x-slot>
                             </x-form.input>
-                            <p class="mt-0.5"> @error('title') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.title') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
 
                         <div>
@@ -37,7 +37,7 @@
                                 name="description"
                                 type="text"
                                 placeholder="Descrição"
-                                wire:model="description"
+                                wire:model="form.description"
                             >
                                 <x-slot name="icon">
                                     <x-svg.envelope
@@ -45,7 +45,7 @@
                                     />
                                 </x-slot>
                             </x-form.input>
-                            <p class="mt-0.5"> @error('description') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.description') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
 
                         <div>
@@ -58,7 +58,7 @@
                                     name="company"
                                     type="text"
                                     placeholder="Nome da Empresa"
-                                    wire:model="company"
+                                    wire:model="form.company"
                                     class="flex-1 rounded-r-md"
                                 >
                                     <x-slot name="icon">
@@ -68,7 +68,7 @@
                                     </x-slot>
                                 </x-form.input>
                             </div>
-                            <p class="mt-0.5"> @error('company') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.company') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
 
                         <div>
@@ -81,7 +81,7 @@
                                 name="stacks"
                                 type="text"
                                 placeholder="Digite as Stacks"
-                                wire:model="stacks"
+                                wire:model="form.stacks"
                             >
                                 <x-slot name="icon">
                                     <x-svg.linkedin
@@ -89,7 +89,7 @@
                                     />
                                 </x-slot>
                             </x-form.input>
-                            <p class="mt-0.5"> @error('stacks') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.stacks') <span class="text-red-500">{{ $message }}</span> @enderror</p>
 
                         </div>
                         <div>
@@ -102,7 +102,7 @@
                                 name="city"
                                 type="text"
                                 placeholder="Informe sua cidade"
-                                wire:model="city"
+                                wire:model="form.city"
                             >
                                 <x-slot name="icon">
                                     <x-svg.map-bin
@@ -110,7 +110,7 @@
                                     />
                                 </x-slot>
                             </x-form.input>
-                            <p class="mt-0.5"> @error('city') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.city') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -121,11 +121,11 @@
                                 name="state"
                                 type="text"
                                 placeholder="Digite o Estado com Apenas duas Letras ex(SP)"
-                                wire:model="state"
+                                wire:model="form.state"
                                 maxlength="2"
                             >
                             </x-form.input>
-                            <p class="mt-0.5"> @error('state') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.state') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -137,7 +137,7 @@
                                 name="salary"
                                 type="text"
                                 placeholder="R$ 0.000,00"
-                                wire:model="salary"
+                                wire:model="form.salary"
                             >
                                 <x-slot name="icon">
                                     <x-svg.currency-dollar
@@ -145,7 +145,7 @@
                                     />
                                 </x-slot>
                             </x-form.input>
-                            <p class="mt-0.5"> @error('salary') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.salary') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
 
                         <div>
@@ -155,13 +155,13 @@
                             <div class="flex space-x-4">
                                 @foreach($contract_types as $contract_type)
                                     <label class="flex items-center">
-                                        <input wire:model="contract_type" type="radio" name="contract"
+                                        <input wire:model="form.contract_type" type="radio" name="contract"
                                                value="{{$contract_type->value}}" class="mr-2">
                                         <span class="text-sm text-gray-700">{{$contract_type->name}}</span>
                                     </label>
                                 @endforeach
                             </div>
-                            <p class="mt-0.5"> @error('contract_type') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.contract_type') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -170,13 +170,13 @@
                             <div class="flex space-x-4">
                                 @foreach($types as $type)
                                     <label class="flex items-center">
-                                        <input wire:model="type" type="radio" name="type" value="{{$type->value}}"
+                                        <input wire:model="form.type" type="radio" name="type" value="{{$type->value}}"
                                                class="mr-2">
                                         <span class="text-sm text-gray-700">{{$type->name}}</span>
                                     </label>
                                 @endforeach
                             </div>
-                            <p class="mt-0.5"> @error('type') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="mt-0.5"> @error('form.type') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -185,13 +185,13 @@
                             <div class="flex space-x-4">
                                 @foreach($locations as $location)
                                     <label class="flex items-center">
-                                        <input wire:model="location" type="radio" name="location" value="{{$location->value}}"
+                                        <input wire:model="form.location" type="radio" name="location" value="{{$location->value}}"
                                                class="mr-2">
                                         <span class="text-sm text-gray-700">{{$location->name}}</span>
                                     </label>
                                 @endforeach
                             </div>
-                            <p class="p-0.5"> @error('location') <span class="text-red-500">{{ $message }}</span> @enderror</p>
+                            <p class="p-0.5"> @error('form.location') <span class="text-red-500">{{ $message }}</span> @enderror</p>
                         </div>
 
                         <x-form.button type="submit"

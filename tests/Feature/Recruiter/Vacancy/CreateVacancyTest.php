@@ -18,26 +18,26 @@ it('should create a vacancy being a recruiter', function (): void {
 
     Livewire::actingAs($recruiter)
         ->test(CreateVacancy::class)
-        ->set('title', 'vacancy-title')
-        ->assertSet('title', 'vacancy-title')
-        ->set('description', 'vacancy-description')
-        ->assertSet('description', 'vacancy-description')
-        ->set('city', 'vacancy-city')
-        ->assertSet('city', 'vacancy-city')
-        ->set('stacks', 'Laravel')
-        ->assertSet('stacks', 'Laravel')
-        ->set('state', 'SP')
-        ->assertSet('state', 'SP')
-        ->set('company', 'vacancy-company')
-        ->assertSet('company', 'vacancy-company')
-        ->set('salary', '5000')
-        ->assertSet('salary', '5000')
-        ->set('type', VacancyTypeEnum::FullTime)
-        ->assertSet('type', VacancyTypeEnum::FullTime->value)
-        ->set('contract_type', VacancyContractTypeEnum::Clt)
-        ->assertSet('contract_type', VacancyContractTypeEnum::Clt->value)
-        ->set('location', VacancyLocationEnum::Remote)
-        ->assertSet('location', VacancyLocationEnum::Remote->value)
+        ->set('form.title', 'vacancy-title')
+        ->assertSet('form.title', 'vacancy-title')
+        ->set('form.description', 'vacancy-description')
+        ->assertSet('form.description', 'vacancy-description')
+        ->set('form.city', 'vacancy-city')
+        ->assertSet('form.city', 'vacancy-city')
+        ->set('form.stacks', 'Laravel')
+        ->assertSet('form.stacks', 'Laravel')
+        ->set('form.state', 'SP')
+        ->assertSet('form.state', 'SP')
+        ->set('form.company', 'vacancy-company')
+        ->assertSet('form.company', 'vacancy-company')
+        ->set('form.salary', '5000')
+        ->assertSet('form.salary', '5000')
+        ->set('form.type', VacancyTypeEnum::FullTime)
+        ->assertSet('form.type', VacancyTypeEnum::FullTime->value)
+        ->set('form.contract_type', VacancyContractTypeEnum::Clt)
+        ->assertSet('form.contract_type', VacancyContractTypeEnum::Clt->value)
+        ->set('form.location', VacancyLocationEnum::Remote)
+        ->assertSet('form.location', VacancyLocationEnum::Remote->value)
         ->assertHasNoErrors()
         ->call('save');
 
@@ -61,26 +61,26 @@ test('candidate cannot create a vacancy', function (): void {
 
     Livewire::actingAs($candidate)
         ->test(CreateVacancy::class)
-        ->set('title', 'vacancy-title')
-        ->assertSet('title', 'vacancy-title')
-        ->set('description', 'vacancy-description')
-        ->assertSet('description', 'vacancy-description')
-        ->set('city', 'vacancy-city')
-        ->assertSet('city', 'vacancy-city')
-        ->set('stacks', 'Laravel')
-        ->assertSet('stacks', 'Laravel')
-        ->set('state', 'SP')
-        ->assertSet('state', 'SP')
-        ->set('company', 'vacancy-company')
-        ->assertSet('company', 'vacancy-company')
-        ->set('salary', '5000')
-        ->assertSet('salary', '5000')
-        ->set('type', VacancyTypeEnum::FullTime)
-        ->assertSet('type', VacancyTypeEnum::FullTime->value)
-        ->set('contract_type', VacancyContractTypeEnum::Clt)
-        ->assertSet('contract_type', VacancyContractTypeEnum::Clt->value)
-        ->set('location', VacancyLocationEnum::Remote)
-        ->assertSet('location', VacancyLocationEnum::Remote->value)
+        ->set('form.title', 'vacancy-title')
+        ->assertSet('form.title', 'vacancy-title')
+        ->set('form.description', 'vacancy-description')
+        ->assertSet('form.description', 'vacancy-description')
+        ->set('form.city', 'vacancy-city')
+        ->assertSet('form.city', 'vacancy-city')
+        ->set('form.stacks', 'Laravel')
+        ->assertSet('form.stacks', 'Laravel')
+        ->set('form.state', 'SP')
+        ->assertSet('form.state', 'SP')
+        ->set('form.company', 'vacancy-company')
+        ->assertSet('form.company', 'vacancy-company')
+        ->set('form.salary', '5000')
+        ->assertSet('form.salary', '5000')
+        ->set('form.type', VacancyTypeEnum::FullTime)
+        ->assertSet('form.type', VacancyTypeEnum::FullTime->value)
+        ->set('form.contract_type', VacancyContractTypeEnum::Clt)
+        ->assertSet('form.contract_type', VacancyContractTypeEnum::Clt->value)
+        ->set('form.location', VacancyLocationEnum::Remote)
+        ->assertSet('form.location', VacancyLocationEnum::Remote->value)
         ->call('save')
         ->assertForbidden();
 
@@ -105,9 +105,9 @@ describe('validation tests', function () {
 
     test('title::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('title', $value)
+            ->set('form.title', $value)
             ->call('save')
-            ->assertHasErrors(['title' => $rule]);
+            ->assertHasErrors(['form.title' => $rule]);
     })->with([
         'required' => ['', 'O Título é Obrigatório.'],
         'min:3'    => ['aa', 'O Título deve ter no mínimo 3 caracteres.'],
@@ -116,9 +116,9 @@ describe('validation tests', function () {
 
     test('description::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('description', $value)
+            ->set('form.description', $value)
             ->call('save')
-            ->assertHasErrors(['description' => $rule]);
+            ->assertHasErrors(['form.description' => $rule]);
     })->with([
         'required' => ['', 'A Descrição é Obrigatória.'],
         'min:3'    => ['aa', 'A Descrição deve ter no mínimo 3 caracteres.'],
@@ -127,9 +127,9 @@ describe('validation tests', function () {
 
     test('city::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('city', $value)
+            ->set('form.city', $value)
             ->call('save')
-            ->assertHasErrors(['city' => $rule]);
+            ->assertHasErrors(['form.city' => $rule]);
     })->with([
         'required' => ['', 'A Cidade é Obrigatória.'],
         'min:3'    => ['aa', 'A Cidade deve ter no mínimo 3 caracteres.'],
@@ -138,9 +138,9 @@ describe('validation tests', function () {
 
     test('company::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('company', $value)
+            ->set('form.company', $value)
             ->call('save')
-            ->assertHasErrors(['company' => $rule]);
+            ->assertHasErrors(['form.company' => $rule]);
     })->with([
         'required' => ['', 'A Empresa é Obrigatória.'],
         'min:3'    => ['aa', 'A Empresa deve ter no mínimo 3 caracteres.'],
@@ -149,9 +149,9 @@ describe('validation tests', function () {
 
     test('stacks::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('stacks', $value)
+            ->set('form.stacks', $value)
             ->call('save')
-            ->assertHasErrors(['stacks' => $rule]);
+            ->assertHasErrors(['form.stacks' => $rule]);
     })->with([
         'min:3'   => ['aa', 'As Stacks devem ter no mínimo 3 caracteres.'],
         'max:255' => [str_repeat('*', 256), 'As Stacks devem ter no máximo 255 caracteres.'],
@@ -159,36 +159,36 @@ describe('validation tests', function () {
 
     test('salary::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('salary', $value)
+            ->set('form.salary', $value)
             ->call('save')
-            ->assertHasErrors(['salary' => $rule]);
+            ->assertHasErrors(['form.salary' => $rule]);
     })->with([
         'numeric' => ['ahhahahah', 'Apenas números são permitidos no campo de salário'],
     ]);
 
     test('type::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('type', $value)
+            ->set('form.type', $value)
             ->call('save')
-            ->assertHasErrors(['type' => $rule]);
+            ->assertHasErrors(['form.type' => $rule]);
     })->with([
         'required' => ['', 'O Tipo de Vaga é Obrigatório.'],
     ]);
 
     test('contract_type::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('contract_type', $value)
+            ->set('form.contract_type', $value)
             ->call('save')
-            ->assertHasErrors(['contract_type' => $rule]);
+            ->assertHasErrors(['form.contract_type' => $rule]);
     })->with([
         'required' => ['', 'O Tipo de Contrato é Obrigatório.'],
     ]);
 
     test('location::validation', function ($value, $rule): void {
         Livewire::test(CreateVacancy::class)
-            ->set('location', $value)
+            ->set('form.location', $value)
             ->call('save')
-            ->assertHasErrors(['location' => $rule]);
+            ->assertHasErrors(['form.location' => $rule]);
     })->with([
         'required' => ['', 'A Modalidade de Trabalho é Obrigatória.'],
     ]);

@@ -5,34 +5,16 @@ namespace App\Livewire\Recruiter\Vacancy;
 use App\Enums\Vacancy\VacancyContractTypeEnum;
 use App\Enums\Vacancy\VacancyLocationEnum;
 use App\Enums\Vacancy\VacancyTypeEnum;
+use App\Livewire\Forms\VacancyForm;
 use App\Models\Vacancy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 
 class CreateVacancy extends Component
 {
-    public string $title;
-
-    public string $description;
-
-    public string $city;
-
-    public string $stacks;
-
-    public string $state;
-
-    public string $company;
-
-    public string $salary;
-
-    public string $type;
-
-    public string $contract_type;
-
-    public string $location;
+    public VacancyForm $form;
 
     /**
      * @throws AuthorizationException
@@ -43,60 +25,20 @@ class CreateVacancy extends Component
         $this->validate();
 
         Vacancy::query()->create([
-            'title'         => $this->title,
-            'description'   => $this->description,
-            'city'          => $this->city,
-            'state'         => $this->state,
-            'company'       => $this->company,
-            'stacks'        => $this->stacks,
-            'salary'        => $this->salary,
-            'type'          => $this->type,
-            'contract_type' => $this->contract_type,
-            'location'      => $this->location,
+            'title'         => $this->form->title,
+            'description'   => $this->form->description,
+            'city'          => $this->form->city,
+            'state'         => $this->form->state,
+            'company'       => $this->form->company,
+            'stacks'        => $this->form->stacks,
+            'salary'        => $this->form->salary,
+            'type'          => $this->form->type,
+            'contract_type' => $this->form->contract_type,
+            'location'      => $this->form->location,
             'user_id'       => auth()->id(),
         ]);
 
         return redirect()->to(route('index'));
-    }
-
-    protected function rules(): array
-    {
-        return [
-            'title'         => 'required|string|min:3|max:255',
-            'description'   => 'required|string|min:3|max:255',
-            'city'          => 'required|string|min:3|max:100',
-            'state'         => 'required|string|min:2|max:2',
-            'company'       => 'required|string|min:3|max:255',
-            'stacks'        => 'sometimes|string|min:3|max:255',
-            'salary'        => 'sometimes|string|numeric',
-            'type'          => ['required', Rule::enum(VacancyTypeEnum::class)],
-            'contract_type' => ['required', Rule::enum(VacancyContractTypeEnum::class)],
-            'location'      => ['required', Rule::enum(VacancyLocationEnum::class)],
-        ];
-    }
-
-    protected function messages(): array
-    {
-        return [
-            'title.required'         => 'O Título é Obrigatório.',
-            'title.min'              => 'O Título deve ter no mínimo 3 caracteres.',
-            'title.max'              => 'O Título deve ter no máximo 255 caracteres.',
-            'description.required'   => 'A Descrição é Obrigatória.',
-            'description.min'        => 'A Descrição deve ter no mínimo 3 caracteres.',
-            'description.max'        => 'A Descrição deve ter no máximo 255 caracteres.',
-            'city.required'          => 'A Cidade é Obrigatória.',
-            'city.min'               => 'A Cidade deve ter no mínimo 3 caracteres.',
-            'city.max'               => 'A Cidade deve ter no máximo 100 caracteres.',
-            'company.required'       => 'A Empresa é Obrigatória.',
-            'company.min'            => 'A Empresa deve ter no mínimo 3 caracteres.',
-            'company.max'            => 'A Empresa deve ter no máximo 255 caracteres.',
-            'stacks.min'             => 'As Stacks devem ter no mínimo 3 caracteres.',
-            'stacks.max'             => 'As Stacks devem ter no máximo 255 caracteres.',
-            'salary.numeric'         => 'Apenas números são permitidos no campo de salário',
-            'type.required'          => 'O Tipo de Vaga é Obrigatório.',
-            'contract_type.required' => 'O Tipo de Contrato é Obrigatório.',
-            'location.required'      => 'A Modalidade de Trabalho é Obrigatória.',
-        ];
     }
 
     public function render(): View
