@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     /**
      * Relationships
-    */
+     */
     public function address()
     {
         return $this->hasOne(Address::class);

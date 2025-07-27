@@ -18,21 +18,21 @@ class Address extends Model
         'neighborhood',
         'state',
         'city',
-        'selected'
+        'selected',
     ];
 
     /**
      * Scopes
-    */
+     */
 
     /**
      * Relationships
-    */
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
-    }   
-    
+    }
+
     /**
      * Accerssors and Mutators
     */
