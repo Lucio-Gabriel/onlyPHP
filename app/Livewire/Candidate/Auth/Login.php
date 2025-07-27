@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Candidate\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
@@ -24,6 +25,13 @@ class Login extends Component
             'password.required' => 'O campo senha é obrigatório.',
             'password.max'      => 'O campo senha deve ter no máximo 255 caracteres.',
         ];
+    }
+
+    public function mount()
+    {
+        if (Auth::check()) {
+            return redirect()->route('index');
+        }
     }
 
     public function login()

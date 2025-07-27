@@ -28,11 +28,9 @@ Route::prefix('candidate')->group(function () {
     });
 
     Route::get('/login', Login::class)
-        ->middleware('redirect.authenticated.candidate')
         ->name('login.candidate');
 
     Route::get('/register', Register::class)
-        ->middleware('redirect.authenticated.candidate')
         ->name('register.candidate');
 
     Route::get('/index', App\Livewire\Candidate\Index::class)

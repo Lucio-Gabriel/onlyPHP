@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectUnauthenticatedCandidate
+class AuthMiddleware
 {
     /**
      * Redireciona para login se o candidato não estiver autenticado.

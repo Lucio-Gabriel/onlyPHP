@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Middleware\RedirectIfAuthenticatedCandidate;
-use App\Http\Middleware\RedirectUnauthenticatedCandidate;
+use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app['router']->aliasMiddleware('redirect.authenticated.candidate', RedirectIfAuthenticatedCandidate::class);
-        $this->app['router']->aliasMiddleware('auth.candidate', RedirectUnauthenticatedCandidate::class);
+
+        $this->app['router']->aliasMiddleware('auth.candidate', AuthMiddleware::class);
     }
 
     /**
