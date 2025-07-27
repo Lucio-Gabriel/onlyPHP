@@ -29,7 +29,7 @@ class VacancyPolicy
      */
     public function update(User $user, Vacancy $vacancy): bool
     {
-        return $user->isRecruiter() && $vacancy->owner()->id === $user->getKey();
+        return $user->isRecruiter() && $vacancy->owner->id === $user->getKey();
     }
 
     /**

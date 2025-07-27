@@ -41,7 +41,7 @@
                                     <span class="text-xs text-muted-foreground"> {{ $vacancy->created_at }} </span>
 
                                     <div class="flex space-x-2">
-                                        <a href=" #" wire:navigate
+                                        <a href="{{route('vacancies.edit.recruiter', $vacancy)}}" wire:navigate
                                            class="flex items-center space-x-1 px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
                                             <x-svg.send class="w-3.5 h-3.5"/>
                                             <span>Editar</span>

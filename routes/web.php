@@ -6,6 +6,7 @@ use App\Livewire\Candidate\Auth\LinkedinCallback;
 use App\Livewire\Candidate\Auth\Login;
 use App\Livewire\Candidate\Auth\Register;
 use App\Livewire\Recruiter\Vacancy\CreateVacancy;
+use App\Livewire\Recruiter\Vacancy\EditVacancy;
 use App\Livewire\Recruiter\Vacancy\ListVacancy;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -44,6 +45,7 @@ Route::prefix('recruiter')->group(function () {
 
     Route::get('/vacancies/create', CreateVacancy::class)->name('vacancies.store.recruiter');
     Route::get('/vacancies/', ListVacancy::class)->name('vacancies.index.recruiter');
+    Route::get('/vacancies/edit/{vacancy}', EditVacancy::class)->name('vacancies.edit.recruiter');
 
     Route::get('/auth/redirect', function () {
         return Socialite::driver('linkedin_recruiter')->redirect();
