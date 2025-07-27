@@ -37,7 +37,7 @@ class VacancyPolicy
      */
     public function delete(User $user, Vacancy $vacancy): bool
     {
-        return false;
+        return $user->isRecruiter() && $vacancy->owner->id === $user->getKey();
     }
 
     /**

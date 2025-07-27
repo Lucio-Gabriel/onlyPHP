@@ -46,6 +46,14 @@
                                             <x-svg.send class="w-3.5 h-3.5"/>
                                             <span>Editar</span>
                                         </a>
+                                        <a class="flex items-center space-x-1 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-primary/90 duration-300 transition-colors text-sm font-medium">
+                                            <x-svg.arrow-low class="w-3.5 h-3.5"/>
+                                            <livewire:recruiter.vacancy.delete-vacancy :vacancy="$vacancy" :key="$vacancy->id"/>
+                                        </a>
+
+                                    </div>
+                                    <div class="flex space-x-2">
+
                                     </div>
                                 </div>
                             </div>
