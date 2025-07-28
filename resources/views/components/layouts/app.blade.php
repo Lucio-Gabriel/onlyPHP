@@ -1217,7 +1217,7 @@
 
 
     @if (session()->has('message'))
-        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
+        <div id="notification" x-data="{ show: true }" x-show="show" x-init="console.log('Notification shown'); setTimeout(() => show = false, 5000)"
             x-transition:enter="transform ease-out duration-300 transition"
             x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
             x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"

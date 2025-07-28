@@ -10,6 +10,7 @@
         "laravel/framework": "^11.31",
         "laravel/socialite": "^5.22",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.29",
         "livewire/livewire": "^3.6",
         "socialiteproviders/linkedin": "^5.0"
     },
