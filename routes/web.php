@@ -50,9 +50,13 @@ Route::prefix('recruiter')->group(function () {
     Route::get('/login', LoginRecruiter::class)->name('login.recruiter');
     Route::get('/register', [RegisterRecruiter::class, 'index'])->name('register.recruiter');
 
-    Route::get('/vacancies/create', CreateVacancy::class)->name('vacancies.store.recruiter')->middleware('auth');
-    Route::get('/vacancies/', ListVacancy::class)->name('vacancies.index.recruiter')->middleware('auth');
-    Route::get('/vacancies/edit/{vacancy}', EditVacancy::class)->name('vacancies.edit.recruiter')->middleware('auth');
+    // Route::get('/vacancies/create', CreateVacancy::class)->name('vacancies.store.recruiter')->middleware('auth');
+    // Route::get('/vacancies/', ListVacancy::class)->name('vacancies.index.recruiter')->middleware('auth');
+    // Route::get('/vacancies/edit/{vacancy}', EditVacancy::class)->name('vacancies.edit.recruiter')->middleware('auth');
+
+    Route::get('vacancies/index', App\Livewire\NewRecruiter\Vacancy\Index::class)
+        ->name('vacancies.index.recruiter')
+        ->middleware('auth');
 
     Route::get('/auth/redirect', function () {
         return Socialite::driver('linkedin_recruiter')->redirect();

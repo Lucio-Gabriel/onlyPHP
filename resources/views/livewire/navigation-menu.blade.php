@@ -72,6 +72,18 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('vacancies.index.recruiter') }}" wire:navigate
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
+
+                        <x-svg.ui-check
+                            class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+
+                        <span class="ms-3">
+                            Area recruiter
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary group">
                         <x-svg.briefcase
