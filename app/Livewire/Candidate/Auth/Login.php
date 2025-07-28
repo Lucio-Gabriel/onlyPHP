@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Candidate\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
@@ -26,6 +27,19 @@ class Login extends Component
         ];
     }
 
+    /**
+     * @return void|RedirectResponse
+     */
+    public function mount()
+    {
+        if (Auth::check()) {
+            return redirect()->route('index');
+        }
+    }
+
+    /**
+     * @return void|RedirectResponse
+     */
     public function login()
     {
         $this->validate();

@@ -26,16 +26,23 @@ Route::get('/auth/callback', LinkedinCallback::class)
     ->name('auth.linkedin.callback');
 
 Route::prefix('candidate')->group(function () {
-    Route::get('/login', Login::class)->name('login.candidate');
 
-    Route::get('/register', Register::class)->name('register.candidate');
+    Route::get('/', function () {
+        return redirect()->route('index');
+    });
+
+    Route::get('/login', Login::class)
+        ->name('login.candidate');
+
+    Route::get('/register', Register::class)
+        ->name('register.candidate');
 
     Route::get('/index', App\Livewire\Candidate\Index::class)
-        ->middleware('auth')
+        ->middleware('auth.candidate')
         ->name('index');
 
     Route::get('/aplications-vacancies/{vacancy}', App\Livewire\Candidate\ApplyToVacancy::class)
-        ->middleware('auth')
+        ->middleware('auth.candidate')
         ->name('applications.vacancies');
 });
 
