@@ -15,11 +15,11 @@
                         </h1>
                         <p class="text-gray-600 mt-1">Gerencie suas vagas e candidatos</p>
                     </div>
-                    <button
+                    <a href="{{ route('vacancies.create.recruiter') }}" wire:navigate
                         class="bg-primary hover:bg-primary-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
                         <x-svg.plus class="w-4 h-4" />
                         Nova Vaga
-                    </button>
+                    </a>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
