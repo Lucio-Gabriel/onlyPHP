@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+
 use function Pest\Laravel\actingAs;
 
 test('candidate cannot see recruiters navigation items on sidebar', function (): void {
