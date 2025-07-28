@@ -31,7 +31,7 @@ class EditVacancy extends Component
         $this->form->location = $vacancy->location->value;
     }
 
-    public function save(): Redirector
+    public function save()
     {
         $this->authorize('update', $this->vacancy);
         $this->validate();

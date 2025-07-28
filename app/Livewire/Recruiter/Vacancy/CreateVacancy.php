@@ -9,6 +9,7 @@ use App\Livewire\Forms\VacancyForm;
 use App\Models\Vacancy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 
@@ -19,7 +20,7 @@ class CreateVacancy extends Component
     /**
      * @throws AuthorizationException
      */
-    public function save(): Redirector
+    public function save()
     {
         $this->authorize('create', Vacancy::class);
         $this->validate();
