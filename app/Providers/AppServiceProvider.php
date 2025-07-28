@@ -13,7 +13,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         $this->app['router']->aliasMiddleware('auth.candidate', AuthMiddleware::class);
     }
 
