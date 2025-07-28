@@ -10,7 +10,7 @@
                         <x-svg.bars class="w-6 h-6" />
                     </button>
                     <div class="flex ms-2 md:me-24">
-                        <img src="{{ asset('images/logo/php.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                        <img src="{{ asset('images/logo/php.png') }}" class="h-8 me-3" alt="FlowBite Logo"/>
                         <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">onlyPHP</span>
                     </div>
@@ -20,28 +20,28 @@
                     <div class="flex items-center ms-3">
                         <div x-data="{ userDropdownOpen: false }" class="relative">
                             <button @click="userDropdownOpen = !userDropdownOpen"
-                                class="flex items-center space-x-2 p-2 rounded-md hover:bg-secondary focus:outline-none duration-300">
+                                    class="flex items-center space-x-2 p-2 rounded-md hover:bg-secondary focus:outline-none duration-300">
                                 <img src="{{ Auth::user()->avatar }}" alt="Avatar"
-                                    class="w-8 h-8 rounded-full" />
+                                     class="w-8 h-8 rounded-full"/>
                                 <span
                                     class="hidden md:inline text-sm text-white font-medium">{{ Auth::user()->name }}</span>
-                                <x-svg.arrow-low class="w-4 h-4 text-white" />
+                                <x-svg.arrow-low class="w-4 h-4 text-white"/>
                             </button>
 
                             <div x-show="userDropdownOpen" @click.away="userDropdownOpen = false" x-transition
-                                class="absolute right-0 border border-b-secondary mt-2 w-48 bg-primary rounded-md shadow-lg z-50">
+                                 class="absolute right-0 border border-b-secondary mt-2 w-48 bg-primary rounded-md shadow-lg z-50">
                                 <ul class="py-1 text-sm text-gray-700">
                                     <li>
                                         <a href="#"
-                                            class="text-white block px-4 py-2 hover:bg-secondary duration-300">Perfil</a>
+                                           class="text-white block px-4 py-2 hover:bg-secondary duration-300">Perfil</a>
                                     </li>
                                     <li>
                                         <a href="#"
-                                            class="text-white block px-4 py-2 hover:bg-secondary duration-300">Configurações</a>
+                                           class="text-white block px-4 py-2 hover:bg-secondary duration-300">Configurações</a>
                                     </li>
                                     <li>
                                         <button wire:click="logout"
-                                            class="w-full text-left text-white block px-4 py-2 hover:bg-secondary duration-300">
+                                                class="w-full text-left text-white block px-4 py-2 hover:bg-secondary duration-300">
                                             Sair
                                         </button>
                                     </li>
@@ -55,35 +55,55 @@
     </nav>
 
     <aside id="logo-sidebar" :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full sm:translate-x-0'"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-secondary"
-        aria-label="Sidebar">
+           class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-primary dark:border-secondary"
+           aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-primary">
             <ul class="space-y-2 font-medium">
-                <li>
-                    <a href="{{ route('index') }}" wire:navigate
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
 
-                        <x-svg.ui-check
-                            class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            {{--RecruiterRegion--}}
+                @if(auth()->user()->isRecruiter() === true)
+                    <li>
+                        <a href="{{route('vacancies.index.recruiter')}}"
+                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary group">
+                            <x-svg.ui-check
+                                class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span class="flex-1 ms-3 whitespace-nowrap">
+                           Suas Vagas
+                        </span>
+                            <span
+                                class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                        </span>
+                        </a>
 
-                        <span class="ms-3">
+                        <a href="{{route('vacancies.store.recruiter')}}"
+                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary group">
+                            <x-svg.briefcase
+                                class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span class="flex-1 ms-3 whitespace-nowrap">
+                          Criar Vaga
+                        </span>
+                            <span
+                                class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                        </span>
+                        </a>
+                    </li>
+                @endif
+            {{--EndRecruiterRegion--}}
+
+                {{--CandidateRegion--}}
+                @if(auth()->user()->isCandidate())
+                    <li>
+                        <a href="{{ route('index') }}" wire:navigate
+                           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
+
+                            <x-svg.ui-check
+                                class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+
+                            <span class="ms-3">
                             Dashboard
                         </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary group">
-                        <x-svg.briefcase
-                            class="shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                        <span class="flex-1 ms-3 whitespace-nowrap">
-                            Vagas
-                        </span>
-                        <span
-                            class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro
-                        </span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
                 <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
@@ -98,6 +118,7 @@
                         </span>
                     </a>
                 </li>
+                @endif
                 <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-secondary duration-300 group">
