@@ -9,7 +9,7 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 
 it('should be able to apply to a Vacancy', function (): void {
-    $candidate = User::factory()->create();
+    $candidate = User::factory()->candidate()->create();
     $vacancy = Vacancy::factory()->create();
 
     Livewire::actingAs($candidate)
@@ -36,7 +36,7 @@ it('should be able to apply to a Vacancy', function (): void {
 });
 
 it('should not apply twice at the same vacancy', function (): void {
-    $candidate = User::factory()->create();
+    $candidate = User::factory()->candidate()->create();
     $vacancy = Vacancy::factory()->create();
 
     for ($i = 0; $i <= 2; $i++) {
