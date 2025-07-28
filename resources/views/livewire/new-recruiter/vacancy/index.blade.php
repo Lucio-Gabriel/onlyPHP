@@ -203,9 +203,7 @@
                                                     <div class="flex items-center justify-between border-b border-outline bg-white p-4 dark:border-outline-dark dark:bg-surface-dark/20">
                                                         <h3 id="defaultModalTitle" class="font-semibold tracking-wide text-on-surface-strong dark:text-on-surface-dark-strong">Vaga ativa</h3>
                                                         <button x-on:click="modalIsOpen = false" aria-label="close modal">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.4" class="w-5 h-5">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                                                            </svg>
+                                                            <x-svg.close class="w-5 h-5" />
                                                         </button>
                                                     </div>
                                                     <div class="text-xl font-semi px-4 py-8 text-center">
