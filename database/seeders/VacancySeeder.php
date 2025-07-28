@@ -8,9 +8,6 @@ use Illuminate\Database\Seeder;
 
 class VacancySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Vacancy::create([
