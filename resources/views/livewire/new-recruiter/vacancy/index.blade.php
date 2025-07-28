@@ -90,142 +90,124 @@
                     </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
-                        <div class="p-6">
-                            <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
-                                <div class="flex-1 space-y-3">
-                                    <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-                                        <h3 class="text-xl font-semibold text-gray-900">
-                                            Desenvolvedor Frontend React Sênior
-                                        </h3>
-                                        <span class="w-fit px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 border border-green-200">
-                                            Ativa
-                                        </span>
-                                    </div>
+                @foreach ($this->vacancies as $vacancy)
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+                            <div class="p-6">
+                                <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+                                    <div class="flex-1 space-y-3">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                            <h3 class="text-xl font-semibold text-gray-900">
+                                                {{ $vacancy->title }}
+                                            </h3>
+                                            <span class="w-fit px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 border border-green-200">
+                                                Ativa
+                                            </span>
+                                        </div>
 
-                                    <p class="text-gray-700">
-                                        Desenvolvedor React experiente para liderar projetos
-                                        frontend com foco em performance e experiência do usuário. Trabalho com equipe
-                                        ágil e tecnologias modernas.
-                                    </p>
+                                        <p class="text-gray-700">
+                                            {{ $vacancy->description }}
+                                        </p>
 
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-                                        <div class="space-y-2">
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2m-2 0H7m5 0v-5a2 2 0 00-2-2H8a2 2 0 00-2 2v5m5 0V9a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h5z">
-                                                    </path>
-                                                </svg>
-                                                <span><strong>Empresa:</strong> TechCorp Solutions</span>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                                            <div class="space-y-2">
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2m-2 0H7m5 0v-5a2 2 0 00-2-2H8a2 2 0 00-2 2v5m5 0V9a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h5z">
+                                                        </path>
+                                                    </svg>
+                                                    <span><strong>Empresa:</strong> {{ $vacancy->company }} </span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                                        </path>
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    </svg>
+                                                    <span><strong>Local:</strong> {{ $vacancy->city }}, {{ strtoupper($vacancy->state) }}</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                                        </path>
+                                                    </svg>
+                                                    <span><strong>Salário:</strong> R$ {{ $vacancy->salary }}</span>
+                                                </div>
                                             </div>
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                                    </path>
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                </svg>
-                                                <span><strong>Local:</strong> São Paulo, SP</span>
-                                            </div>
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
-                                                    </path>
-                                                </svg>
-                                                <span><strong>Salário:</strong> R$ 12.000 - R$ 18.000</span>
+                                            <div class="space-y-2">
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span><strong>Tipo:</strong> {{ $vacancy->type }}</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                                        </path>
+                                                    </svg>
+                                                    <span><strong>Contrato:</strong> {{ $vacancy->contract_type }}</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-400" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9">
+                                                        </path>
+                                                    </svg>
+                                                    <span><strong>Modalidade:</strong> {{ $vacancy->location }}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="space-y-2">
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                                    </path>
-                                                </svg>
-                                                <span><strong>Tipo:</strong> Tempo Integral</span>
-                                            </div>
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
-                                                    </path>
-                                                </svg>
-                                                <span><strong>Contrato:</strong> CLT</span>
-                                            </div>
-                                            <div class="flex items-center gap-2">
-                                                <svg class="w-4 h-4 text-gray-400" fill="none"
-                                                    stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9">
-                                                    </path>
-                                                </svg>
-                                                <span><strong>Modalidade:</strong> Presencial</span>
-                                            </div>
+
+                                        <div class="flex flex-wrap gap-2">
+                                            <span
+                                                class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
+                                                {{ $vacancy->stacks }}
+                                            </span>
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
-                                            React
-                                        </span>
-
-                                        <span
-                                            class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
-                                            TypeScript
-                                        </span>
-
-                                        <span class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
-                                            Next.js
-                                        </span>
-
-                                        <span class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
-                                            Tailwind
-                                            CSS
-                                        </span>
-
-                                        <span class="px-2 py-1 text-xs font-medium bg-primary-100 text-primary-800 rounded-md">
-                                            Node.js
-                                        </span>
+                                    <div class="flex flex-col gap-2 mt-12 min-w-fit">
+                                        <button
+                                            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                            <x-svg.pencil-square class="w-4 h-4" />
+                                            Editar
+                                        </button>
+                                        <button
+                                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                            <x-svg.trash class="w-4 h-4" />
+                                            Excluir
+                                        </button>
+                                        <button
+                                            class="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                                            <x-svg.eye class="w-4 h-4" />
+                                            Ver Candidatos
+                                        </button>
                                     </div>
-                                </div>
-
-                                <div class="flex flex-col gap-2 mt-12 min-w-fit">
-                                    <button
-                                        class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                        <x-svg.pencil-square class="w-4 h-4" />
-                                        Editar
-                                    </button>
-                                    <button
-                                        class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                        <x-svg.trash class="w-4 h-4" />
-                                        Excluir
-                                    </button>
-                                    <button
-                                        class="px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                        <x-svg.eye class="w-4 h-4" />
-                                        Ver Candidatos
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </x-main-content>
