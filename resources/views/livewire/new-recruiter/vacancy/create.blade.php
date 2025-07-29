@@ -9,7 +9,7 @@
                         <h2 class="text-2xl font-semibold text-primary-700 mb-2">Criar Nova Vaga</h2>
                         <p class="text-primary-500 mb-8">Preencha as informações da vaga que deseja publicar</p>
 
-                        <form class="space-y-6">
+                        <form wire:submit.prevent="save" class="space-y-6">
                             <div>
                                 <label for="title" class="block text-sm font-medium text-primary-700 mb-2">
                                     Título da Vaga
@@ -90,7 +90,7 @@
                                     <label for="state" class="block text-sm font-medium text-primary-700 mb-2">
                                         Estado
                                     </label>
-                                    <select id="state" name="state"
+                                    <select id="state" name="state" wire:model="state"
                                         class="w-full px-4 py-3 bg-primary-50 border border-primary-200 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 outline-none transition-colors text-primary-700">
                                         <option value="">Selecione o estado</option>
                                         <option value="SP">São Paulo</option>
@@ -140,24 +140,24 @@
                                     </label>
                                     <div class="space-y-3">
                                         <label class="flex items-center">
-                                            <input type="radio" name="type" value="full-time"
+                                            <input type="radio" name="type" value="full-time" wire:model="type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">Tempo Integral</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="type" value="part-time"
+                                            <input type="radio" name="type" value="part-time" wire:model="type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">Meio Período</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="type" value="contract"
+                                            <input type="radio" name="type" value="contract" wire:model="type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">Contrato</span>
                                         </label>
                                     </div>
 
                                     <div class="mt-2 text-red-500 text-sm">
-                                        @error('full-time') <span class="error">{{ $message }}</span> @enderror
+                                        @error('type') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
 
@@ -167,17 +167,17 @@
                                     </label>
                                     <div class="space-y-3">
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="CLT"
+                                            <input type="radio" name="contract_type" value="CLT" wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">CLT</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="PJ"
+                                            <input type="radio" name="contract_type" value="PJ"  wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">PJ</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="Freelancer"
+                                            <input type="radio" name="contract_type" value="Freelancer"  wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">Freelancer</span>
                                         </label>
@@ -196,19 +196,19 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="presencial"
+                                        <input type="radio" name="location" value="presencial" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Presencial</span>
                                     </label>
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="remoto"
+                                        <input type="radio" name="location" value="remoto" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Remoto</span>
                                     </label>
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="hibrido"
+                                        <input type="radio" name="location" value="hibrido" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Híbrido</span>
                                     </label>
@@ -241,7 +241,7 @@
                                 </div>
                             </div>
 
-                            <input type="hidden" name="user_id" value="1" />
+                            {{-- <input type="hidden" name="user_id" value="1" />
 
                             <div class="bg-primary-50 rounded-lg p-6 space-y-4">
                                 <label class="flex items-start">
@@ -258,7 +258,7 @@
                                         Publicar vaga imediatamente após criação
                                     </span>
                                 </label>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
