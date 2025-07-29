@@ -36,9 +36,13 @@
                                 <label for="description" class="block text-sm font-medium text-primary-700 mb-2">
                                     Descrição da Vaga
                                 </label>
-                                <textarea id="description" name="description" rows="4"
+                                <textarea id="description" name="description" rows="4" wire:model="description"
                                     placeholder="Descreva as responsabilidades, requisitos e benefícios da vaga..."
                                     class="w-full px-4 py-3 bg-primary-50 border border-primary-200 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 outline-none transition-colors text-primary-700 placeholder-primary-400 resize-none"></textarea>
+
+                                    <div class="mt-2 text-red-500 text-sm">
+                                        @error('description') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                             </div>
 
                             <div>
@@ -167,19 +171,19 @@
                                     </label>
                                     <div class="space-y-3">
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="CLT" wire:model="contract_type"
+                                            <input type="radio" name="contract_type" value="pj" wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">CLT</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="PJ"  wire:model="contract_type"
+                                            <input type="radio" name="contract_type" value="clt"  wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">PJ</span>
                                         </label>
                                         <label class="flex items-center">
-                                            <input type="radio" name="contract_type" value="Freelancer"  wire:model="contract_type"
+                                            <input type="radio" name="contract_type" value="trainee"  wire:model="contract_type"
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
-                                            <span class="ml-2 text-primary-700">Freelancer</span>
+                                            <span class="ml-2 text-primary-700">Trainee</span>
                                         </label>
                                     </div>
 
@@ -196,19 +200,19 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="presencial" wire:model="location"
+                                        <input type="radio" name="location" value="on-site" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Presencial</span>
                                     </label>
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="remoto" wire:model="location"
+                                        <input type="radio" name="location" value="remote" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Remoto</span>
                                     </label>
                                     <label
                                         class="flex items-center p-4 bg-primary-50 border border-primary-200 rounded-lg cursor-pointer hover:bg-primary-100 transition-colors">
-                                        <input type="radio" name="location" value="hibrido" wire:model="location"
+                                        <input type="radio" name="location" value="hybrid" wire:model="location"
                                             class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                         <span class="ml-2 text-primary-700 font-medium">Híbrido</span>
                                     </label>
@@ -241,24 +245,11 @@
                                 </div>
                             </div>
 
-                            {{-- <input type="hidden" name="user_id" value="1" />
-
-                            <div class="bg-primary-50 rounded-lg p-6 space-y-4">
-                                <label class="flex items-start">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 text-secondary-500 border-primary-300 rounded focus:ring-secondary-500 mt-0.5" />
-                                    <span class="ml-3 text-sm text-primary-700">
-                                        Aceito receber candidaturas por email
-                                    </span>
-                                </label>
-                                <label class="flex items-start">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 text-secondary-500 border-primary-300 rounded focus:ring-secondary-500 mt-0.5" />
-                                    <span class="ml-3 text-sm text-primary-700">
-                                        Publicar vaga imediatamente após criação
-                                    </span>
-                                </label>
-                            </div> --}}
+                            <div class="space-y-4">
+                                <x-form.button type="submit" class="w-full">
+                                    Criar Vaga
+                                </x-form.button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -266,9 +257,6 @@
                 <div class="lg:col-span-1">
                     <div class="bg-white rounded-lg shadow-sm border border-primary-100 p-6 sticky top-6">
                         <div class="space-y-4">
-                            <x-form.button type="submit">
-                                Criar Vaga
-                            </x-form.button>
                             <div class="pt-2">
                                 <a href="{{ route('vacancies.index.recruiter') }}" wire:navigate
                                     class="w-full bg-primary-100 hover:bg-primary-200 text-primary-700 font-medium py-3 px-24 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 shadow-lg hover:shadow-xl">
