@@ -15,6 +15,12 @@ class Index extends Component
         return Vacancy::get();
     }
 
+    #[Computed]
+    public function vacanciesRegistered()
+    {
+        return Vacancy::count();
+    }
+
     public function delete(int $vacancyId): void
     {
         Vacancy::findOrFail($vacancyId)->delete();

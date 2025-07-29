@@ -27,9 +27,9 @@
                         class="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-all duration-200">
                         <div class="flex items-center justify-between">
                             <div class="flex-1">
-                                <p class="text-sm font-medium text-muted-foreground mb-1">Candidaturas Feitas</p>
-                                <p class="text-3xl font-bold text-foreground mb-1 text-primary">24</p>
-                                <p class="text-xs text-muted-foreground">Este mês</p>
+                                <p class="text-sm font-medium text-muted-foreground mb-1">Vagas Cadastradas</p>
+                                <p class="text-3xl font-bold text-foreground mb-1 text-primary">{{ $this->vacanciesRegistered }}</p>
+                                <p class="text-xs text-muted-foreground">Total de vagas</p>
                             </div>
                             <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                                 <x-svg.send class="w-6 h-6 text-primary" />
