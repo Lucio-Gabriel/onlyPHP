@@ -16,7 +16,7 @@ class Index extends Component
     }
 
     #[Computed]
-    public function vacanciesRegistered()
+    public function vacanciesRegistered(): int
     {
         return Vacancy::count();
     }

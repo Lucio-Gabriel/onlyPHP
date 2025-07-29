@@ -16,9 +16,9 @@
                                 </label>
 
                                 <x-form.input
-                                    id="text"
+                                    id="title"
                                     name="title"
-                                    type="title"
+                                    type="text"
                                     placeholder="Ex: Desenvolvedor Frontend React Sênior"
                                     wire:model="title"
                                     >
@@ -26,6 +26,10 @@
                                         <x-svg.pencil class="w-5 h-5 text-gray-400" />
                                     </x-slot>
                                 </x-form.input>
+
+                                <div class="mt-2 text-red-500 text-sm">
+                                    @error('title') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
 
                             <div>
@@ -53,6 +57,10 @@
                                         <x-svg.building class="w-5 h-5 text-gray-400" />
                                     </x-slot>
                                 </x-form.input>
+
+                                <div class="mt-2 text-red-500 text-sm">
+                                    @error('company') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -72,7 +80,12 @@
                                             <x-svg.map-bin class="w-5 h-5 text-gray-400" />
                                         </x-slot>
                                     </x-form.input>
+
+                                    <div class="mt-2 text-red-500 text-sm">
+                                        @error('city') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
+
                                 <div>
                                     <label for="state" class="block text-sm font-medium text-primary-700 mb-2">
                                         Estado
@@ -91,6 +104,10 @@
                                         <option value="PE">Pernambuco</option>
                                         <option value="CE">Ceará</option>
                                     </select>
+
+                                    <div class="mt-2 text-red-500 text-sm">
+                                        @error('state') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
                             </div>
 
@@ -110,6 +127,10 @@
                                         <x-svg.currency-dollar class="w-5 h-5 text-gray-400" />
                                     </x-slot>
                                 </x-form.input>
+
+                                <div class="mt-2 text-red-500 text-sm">
+                                    @error('salary') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -134,6 +155,10 @@
                                             <span class="ml-2 text-primary-700">Contrato</span>
                                         </label>
                                     </div>
+
+                                    <div class="mt-2 text-red-500 text-sm">
+                                        @error('full-time') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
 
                                 <div>
@@ -156,6 +181,10 @@
                                                 class="w-4 h-4 text-secondary-500 border-primary-300 focus:ring-secondary-500" />
                                             <span class="ml-2 text-primary-700">Freelancer</span>
                                         </label>
+                                    </div>
+
+                                    <div class="mt-2 text-red-500 text-sm">
+                                        @error('contract_type') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -184,6 +213,10 @@
                                         <span class="ml-2 text-primary-700 font-medium">Híbrido</span>
                                     </label>
                                 </div>
+
+                                <div class="mt-2 text-red-500 text-sm">
+                                    @error('location') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
 
                             <div>
@@ -202,6 +235,10 @@
                                         <x-svg.code-slash class="w-5 h-5 text-gray-400" />
                                     </x-slot>
                                 </x-form.input>
+
+                                <div class="mt-2 text-red-500 text-sm">
+                                    @error('stacks') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                             </div>
 
                             <input type="hidden" name="user_id" value="1" />
