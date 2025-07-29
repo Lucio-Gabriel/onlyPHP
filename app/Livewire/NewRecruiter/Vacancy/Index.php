@@ -5,14 +5,22 @@ namespace App\Livewire\NewRecruiter\Vacancy;
 use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class Index extends Component
 {
+    #[Url(as: 'q', keep: true)]
+    public string $search = '';
+
     #[Computed]
     public function vacancies(): Collection
     {
-        return Vacancy::get();
+        return Vacancy::query()
+            ->where(fn ($q) => $q->where('title', 'like', "%{$this->search}%")
+                ->orWhere('company', 'like', "%{$this->search}%")
+                ->orWhere('location', 'like', "%{$this->search}%"))
+            ->get();
     }
 
     #[Computed]
