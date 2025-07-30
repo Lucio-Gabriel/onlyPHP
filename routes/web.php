@@ -61,3 +61,4 @@ Route::prefix('recruiter')->group(function () {
     Route::get('/auth/callback', [RegisterRecruiter::class, 'store'])
         ->name('auth.recruiter.linkedin.callback');
 });
+

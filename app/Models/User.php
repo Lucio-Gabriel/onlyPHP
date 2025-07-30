@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string $name
  * @property string $email
+ * 
  * @property string $linkedin_id
  * @property string $linkedin_token
  * @property bool $is_candidate
@@ -28,7 +29,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $email_verified_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
  * @mixin
  */
 class User extends Authenticatable
@@ -50,6 +50,7 @@ class User extends Authenticatable
         'is_recruiter',
         'linkedin_id',
         'linkedin_token',
+        
     ];
 
     /**

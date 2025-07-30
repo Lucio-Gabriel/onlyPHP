@@ -38,7 +38,7 @@ class Register extends Controller
             'email'          => $userLinkedin->getEmail(),
             'avatar'         => $userLinkedin->getAvatar(),
             'linkedin_id'    => $userLinkedin->getId(),
-            'linkedin_token' => $userLinkedin->token,
+            'linkedin_token' => $userLinkedin->getToken(),
             'is_candidate'   => 0,
             'is_recruiter'   => 1,
         ]);
