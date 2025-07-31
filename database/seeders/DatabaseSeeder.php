@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
         //     'password' => 'admin',
         // ]);
 
-        Vacancy::factory(10)->create();
+        // Vacancy::factory(10)->create();
+
+        $this->call([
+            VacancySeeder::class,
+        ]);
     }
 }
