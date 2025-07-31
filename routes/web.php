@@ -5,9 +5,6 @@ use App\Http\Controllers\Recruiter\Auth\Register as RegisterRecruiter;
 use App\Livewire\Candidate\Auth\LinkedinCallback;
 use App\Livewire\Candidate\Auth\Login;
 use App\Livewire\Candidate\Auth\Register;
-use App\Livewire\Recruiter\Vacancy\CreateVacancy;
-use App\Livewire\Recruiter\Vacancy\EditVacancy;
-use App\Livewire\Recruiter\Vacancy\ListVacancy;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -50,19 +47,15 @@ Route::prefix('recruiter')->group(function () {
     Route::get('/login', LoginRecruiter::class)->name('login.recruiter');
     Route::get('/register', [RegisterRecruiter::class, 'index'])->name('register.recruiter');
 
-    // Route::get('/vacancies/create', CreateVacancy::class)->name('vacancies.store.recruiter')->middleware('auth');
-    // Route::get('/vacancies/', ListVacancy::class)->name('vacancies.index.recruiter')->middleware('auth');
-    // Route::get('/vacancies/edit/{vacancy}', EditVacancy::class)->name('vacancies.edit.recruiter')->middleware('auth');
-
-    Route::get('vacancies/index', App\Livewire\NewRecruiter\Vacancy\Index::class)
+    Route::get('vacancies/index', App\Livewire\Recruiter\Vacancy\Index::class)
         ->name('vacancies.index.recruiter')
         ->middleware('auth');
 
-    Route::get('vacancies/create', App\Livewire\NewRecruiter\Vacancy\Create::class)
+    Route::get('vacancies/create', App\Livewire\Recruiter\Vacancy\Create::class)
         ->name('vacancies.create.recruiter')
         ->middleware('auth');
 
-    Route::get('vacancies/edit/{vacancy}', App\Livewire\NewRecruiter\Vacancy\Edit::class)
+    Route::get('vacancies/edit/{vacancy}', App\Livewire\Recruiter\Vacancy\Edit::class)
         ->name('vacancies.edit.recruiter')
         ->middleware('auth');
 

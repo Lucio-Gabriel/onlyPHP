@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\NewRecruiter\Vacancy;
+namespace App\Livewire\Recruiter\Vacancy;
 
 use App\Models\Vacancy;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -41,6 +41,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.new-recruiter.vacancy.index');
+        return view('livewire.recruiter.vacancy.index');
     }
 }

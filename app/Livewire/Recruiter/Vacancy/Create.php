@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\NewRecruiter\Vacancy;
+namespace App\Livewire\Recruiter\Vacancy;
 
 use App\Enums\Vacancy\VacancyContractTypeEnum;
 use App\Enums\Vacancy\VacancyLocationEnum;
@@ -113,6 +113,6 @@ class Create extends Component
 
     public function render(): View
     {
-        return view('livewire.new-recruiter.vacancy.create');
+        return view('livewire.recruiter.vacancy.create');
     }
 }

@@ -140,7 +140,7 @@
                                 <x-form.input
                                     id="salary"
                                     name="salary"
-                                    type="text"
+                                    type="number"
                                     placeholder="R$ 8.000 - R$ 12.000"
                                     wire:model="salary"
                                 >
@@ -264,7 +264,7 @@
 
                             <div class="space-y-4">
                                 <x-form.button type="submit" class="w-full">
-                                    Atualizar Vaga
+                                    Criar Vaga
                                 </x-form.button>
                             </div>
                         </form>
