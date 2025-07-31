@@ -125,7 +125,7 @@
                                         <option value="SE">Sergipe</option>
                                         <option value="TO">Tocantins</option>
                                     </select>
-                                    
+
                                     <div class="mt-2 text-red-500 text-sm">
                                         @error('state') <span class="error">{{ $message }}</span> @enderror
                                     </div>
@@ -143,6 +143,8 @@
                                     type="text"
                                     placeholder="R$ 8.000 - R$ 12.000"
                                     wire:model="salary"
+                                    x-data
+                                    x-mask:dynamic="$money($input, ',', '.', 2)"
                                 >
                                     <x-slot name="icon">
                                         <x-svg.currency-dollar class="w-5 h-5 text-gray-400" />
