@@ -62,6 +62,10 @@ Route::prefix('recruiter')->group(function () {
         ->name('vacancies.create.recruiter')
         ->middleware('auth');
 
+    Route::get('vacancies/edit/{vacancy}', App\Livewire\NewRecruiter\Vacancy\Edit::class)
+        ->name('vacancies.edit.recruiter')
+        ->middleware('auth');
+
     Route::get('/auth/redirect', function () {
         return Socialite::driver('linkedin_recruiter')->redirect();
     })->name('auth.recruiter.linkedin.redirect');
