@@ -3,24 +3,27 @@
 namespace App\Livewire\NewRecruiter\Vacancy;
 
 use App\Models\Vacancy;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     #[Url(as: 'q', keep: true)]
     public string $search = '';
 
     #[Computed]
-    public function vacancies(): Collection
+    public function vacancies(): LengthAwarePaginator
     {
         return Vacancy::query()
             ->where(fn ($q) => $q->where('title', 'like', "%{$this->search}%")
                 ->orWhere('company', 'like', "%{$this->search}%")
                 ->orWhere('location', 'like', "%{$this->search}%"))
-            ->get();
+            ->paginate(5);
     }
 
     #[Computed]

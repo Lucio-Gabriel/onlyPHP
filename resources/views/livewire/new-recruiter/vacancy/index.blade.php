@@ -235,6 +235,11 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div class="flex items-center justify-between mt-6">
+                    <p class="text-sm text-gray-500">Mostrando {{ $this->vacancies->count() }} de {{ $this->vacancies->total() }} vagas</p>
+                    {{ $this->vacancies->links() }}
+                </div>
             </div>
         </div>
     </x-main-content>
