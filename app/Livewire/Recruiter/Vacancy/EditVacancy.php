@@ -8,7 +8,6 @@ use App\Enums\Vacancy\VacancyTypeEnum;
 use App\Livewire\Forms\VacancyForm;
 use App\Models\Vacancy;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
 
 class EditVacancy extends Component
 {

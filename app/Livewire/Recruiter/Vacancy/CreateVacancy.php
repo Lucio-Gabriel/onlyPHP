@@ -9,9 +9,7 @@ use App\Livewire\Forms\VacancyForm;
 use App\Models\Vacancy;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
 
 class CreateVacancy extends Component
 {

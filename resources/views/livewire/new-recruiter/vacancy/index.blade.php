@@ -187,11 +187,11 @@
                                     </div>
 
                                     <div class="flex flex-col gap-2 mt-12 min-w-fit">
-                                        <button
+                                        <a href="{{ route('vacancies.edit.recruiter', $vacancy->id) }}" wire:navigate
                                             class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2">
                                             <x-svg.pencil-square class="w-4 h-4" />
                                             Editar
-                                        </button>
+                                        </a>
 
                                         <div x-data="{modalIsOpen: false}">
                                             <button x-on:click="modalIsOpen = true" type="button" class="px-7 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 w-full">

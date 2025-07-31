@@ -17,6 +17,4 @@ enum VacancyLocationEnum: string
     {
         return implode(',', self::values());
     }
-
 }
-

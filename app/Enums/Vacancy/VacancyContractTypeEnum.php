@@ -18,4 +18,3 @@ enum VacancyContractTypeEnum: string
         return implode(',', self::values());
     }
 }
-
