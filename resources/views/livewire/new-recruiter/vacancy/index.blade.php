@@ -73,7 +73,7 @@
                             <input type="text" wire:model.live="search" placeholder="Buscar vagas..."
                                 class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:secondary-blue-500 outline-none">
                         </div>
-                        <select
+                        {{-- <select
                             class="w-full sm:w-48 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 outline-none">
                             <option>Todos os Status</option>
                             <option>Ativas</option>
@@ -86,7 +86,7 @@
                             <option>São Paulo</option>
                             <option>Rio de Janeiro</option>
                             <option>Remoto</option>
-                        </select>
+                        </select> --}}
                     </div>
                 </div>
 
@@ -141,7 +141,7 @@
                                                             d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
                                                         </path>
                                                     </svg>
-                                                    <span><strong>Salário:</strong> R$ {{ $vacancy->salary }}</span>
+                                                    <span><strong>Remuneração:</strong> R$ {{ $vacancy->salary }}</span>
                                                 </div>
                                             </div>
                                             <div class="space-y-2">
@@ -215,8 +215,9 @@
                                                         <button x-on:click="modalIsOpen = false" type="button" class="whitespace-nowrap rounded-radius px-4 py-2 text-center text-sm font-medium tracking-wide text-on-surface transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 dark:text-on-surface-dark dark:focus-visible:outline-primary-dark">
                                                             Cancelar
                                                         </button>
-                                                        <button wire:click="delete({{ $vacancy->id }})" x-on:click="modalIsOpen = false" type="button" class="whitespace-nowrap rounded-radius text-white bg-primary border border-primary dark:border-primary-dark px-4 py-2 rounded-lg text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
-                                                            Remover
+                                                        <button wire:click="delete({{ $vacancy->id }})" x-on:click="modalIsOpen = false" type="button" class="flex gap-2 items-center justify-center whitespace-nowrap rounded-radius text-white bg-primary border border-primary dark:border-primary-dark px-4 py-2 rounded-lg text-center text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
+                                                            <x-svg.trash class="w-4 h-4" />
+                                                            Confirmar
                                                         </button>
                                                     </div>
                                                 </div>
