@@ -140,8 +140,10 @@
                                 <x-form.input
                                     id="salary"
                                     name="salary"
-                                    type="number"
+                                    type="text"
                                     placeholder="R$ 8.000 - R$ 12.000"
+                                    x-data
+                                    x-mask:dynamic="$money($input, ',', '.')"
                                     wire:model="salary"
                                 >
                                     <x-slot name="icon">

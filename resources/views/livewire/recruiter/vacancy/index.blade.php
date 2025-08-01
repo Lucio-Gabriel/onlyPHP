@@ -131,7 +131,7 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                     </svg>
-                                                    <span><strong>Local:</strong> {{ $vacancy->city }}, {{ strtoupper($vacancy->state) }}</span>
+                                                    <span><strong>Local:</strong> {{ $vacancy->fullAddress() }}</span>
                                                 </div>
                                                 <div class="flex items-center gap-2">
                                                     <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"

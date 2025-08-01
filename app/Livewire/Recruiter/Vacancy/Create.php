@@ -31,7 +31,7 @@ class Create extends Component
     public string $stacks = '';
 
     #[Computed]
-    public int $salary;
+    public string $salary;
 
     #[Computed]
     public string $type;
@@ -51,7 +51,7 @@ class Create extends Component
             'state'         => 'required|string|max:2',
             'company'       => 'required|string|max:255',
             'stacks'        => 'required|string|max:255',
-            'salary'        => 'required|integer|min:0',
+            'salary'        => 'required|string|min:0',
             'type'          => 'required|string|in:'.VacancyTypeEnum::toRule(),
             'contract_type' => 'required|string|in:'.VacancyContractTypeEnum::toRule(),
             'location'      => 'required|in:'.VacancyLocationEnum::toRule(),
@@ -80,7 +80,7 @@ class Create extends Component
             'stacks.string'          => 'As stacks devem ser uma string.',
             'stacks.max'             => 'As stacks devem ter no máximo 255 caracteres.',
             'salary.required'        => 'O salário é obrigatório.',
-            'salary.integer'         => 'O salário deve ser um número inteiro.',
+            'salary.string'          => 'O salário deve ser um número inteiro.',
             'salary.min'             => 'O salário deve ser maior que 0.',
             'type.required'          => 'O tipo de vaga é obrigatório.',
             'contract_type.required' => 'O tipo de contrato é obrigatório.',
@@ -92,6 +92,8 @@ class Create extends Component
     {
         $this->validate();
 
+        $salary = (float) str_replace(['.', ','], ['', '.'], $this->salary);
+
         Vacancy::create([
             'title'         => $this->title,
             'description'   => $this->description,
@@ -99,7 +101,7 @@ class Create extends Component
             'state'         => $this->state,
             'company'       => $this->company,
             'stacks'        => $this->stacks,
-            'salary'        => $this->salary,
+            'salary'        => $salary,
             'type'          => $this->type,
             'contract_type' => $this->contract_type,
             'location'      => $this->location,

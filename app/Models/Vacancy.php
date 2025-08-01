@@ -38,6 +38,51 @@ class Vacancy extends Model
         'location'      => VacancyLocationEnum::class,
     ];
 
+    public function getSalaryAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
+    public function getContractTypeAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function getTypeAttribute($value)
+    {
+        switch ($value) {
+            case 'full-time':
+                return 'Tempo Integral';
+            case 'part-time':
+                return 'Meio Período';
+            case 'temporary':
+                return 'Temporário';
+            case 'contract':
+                return 'Contrato';
+            default:
+                return $value;
+        }
+    }
+
+    public function getLocationAttribute($value)
+    {
+        switch ($value) {
+            case 'remote':
+                return 'Remoto';
+            case 'hybrid':
+                return 'Híbrido';
+            case 'on-site':
+                return 'Presencial';
+            default:
+                return $value;
+        }
+    }
+
+    public function fullAddress(): string
+    {
+        return "{$this->city}-{$this->state}";
+    }
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
