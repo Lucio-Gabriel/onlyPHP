@@ -15,7 +15,7 @@
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">onlyPHP</span>
                     </div>
                 </div>
-
+                
                 <div class="flex items-center">
                     <div class="flex items-center ms-3">
                         <div x-data="{ userDropdownOpen: false }" class="relative">
