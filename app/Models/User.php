@@ -90,17 +90,34 @@ class User extends Authenticatable
     {
         return $this->is_recruiter;
     }
-
+  
+    /**
+     * Determine if the user is a admin.
+     */
     public function isAdmin(): bool
     {
         return $this->is_admin;
     }
 
+    /**
+     * Relationshipt user addresses.
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    /**
+     * Relationshipt user vacancies.
+     */
     public function vacancies(): HasMany
     {
         return $this->hasMany(Vacancy::class);
     }
 
+    /**
+     * Relationshipt user applied vacancies.
+     */
     public function applied_vacancies(): BelongsToMany
     {
         return $this->belongsToMany(Vacancy::class, 'user_vacancy', 'user_id', 'vacancy_id');
